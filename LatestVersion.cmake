@@ -1,0 +1,1 @@
+set(CMMM_LATEST_VERSION "1.0")
