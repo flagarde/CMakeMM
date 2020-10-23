@@ -6,7 +6,7 @@ include(../GetCMakeMM.cmake)
 
 cmmm(VERSION "1.0" URL "https://raw.githubusercontent.com/flagarde/CMakeMM" VERBOSE DESTINATION "CMakeMM" ALWAYS_DOWNLOAD)
 
-cmmm_modules_list(URL "https://raw.githubusercontent.com/flagarde/CMakeCM" FOLDER "modules" DESTINATION "Modules")
+cmmm_modules_list(URL "https://raw.githubusercontent.com/flagarde/CMCM" DESTINATION "Modules")
 
 include(Messages)
 
