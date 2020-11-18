@@ -1,5 +1,5 @@
 function(cmmm_download)
-  cmake_parse_arguments(CMMM "" "URL;DESTINATION;" "" "${ARGN}")
+  cmake_parse_arguments(CMMM "" "URL;DESTINATION" "" "${ARGN}")
   set(CMMM_DESTINATION_TMP "${CMMM_DESTINATION}.tmp")
 
   # Guard against multiple processes trying to use the PMM dir simultaneously
