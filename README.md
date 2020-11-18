@@ -2,14 +2,14 @@
 
 CMake Modules Manager.
 
-## Introduction
+## ✨ Introduction
 This repository's main product is the GetCMakeMM.cmake file in the repository root. It downloads CMakeMM which in turn download the list of modules available for download and consumption.
 
 ## ❓ How to use CMakeMM ?
 
-### 1. Download `GetCMakeMM.cmake`
+### 1️⃣ Download `GetCMakeMM.cmake`
 To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://github.com/flagarde/CMakeMM/releases and put it in a place CMake can find it.
-### 2. Use `GetCMakeMM.cmake` in your `CMakeLists.txt`.
+### 2️⃣ Use `GetCMakeMM.cmake` in your `CMakeLists.txt`.
  ```cmake
 	set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 	include(GetCMakeMM)
@@ -38,7 +38,7 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
  
  `VERBOSITY` : Verbosity of CMakeMM `NOTICE`, `STATUS`, `VERBOSE`, `DEBUG` and `TRACE`.
  
- ### 3. Tell to `CMakeMM` where to find the modules list and where to save the modules
+ ### 3️⃣ Tell to `CMakeMM` where to find the modules list and where to save the modules
  ```cmake
  cmmm_modules_list(URL "https://raw.githubusercontent.com/SDHCAL/SDHCALCMakeModules" 
                    BRANCH master
@@ -61,7 +61,7 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
  
  `DESTINATION` : Where to install the Modules.
  
- ### 4. Include the modules you need
+ ### 4️⃣ Include the modules you need
   ```cmake
   include(MyWonderfulModule)
   ```
