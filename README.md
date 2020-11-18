@@ -38,7 +38,7 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
  
  `VERBOSITY` : Verbosity of CMakeMM `NOTICE`, `STATUS`, `VERBOSE`, `DEBUG` and `TRACE`.
  
- ### 3. Tell to `CMakeMM` where find the modules list and where to save the modules
+ ### 3. Tell to `CMakeMM` where to find the modules list and where to save the modules
  ```cmake
  cmmm_modules_list(URL "https://raw.githubusercontent.com/SDHCAL/SDHCALCMakeModules" 
                    BRANCH master
