@@ -13,12 +13,20 @@ macro(set_colors CMMM_NO_COLOR)
 endmacro()
 
 function(cmmm)
-  cmake_parse_arguments(CMMM "VERBOSE;DEBUG;ALWAYS_DOWNLOAD;NO_COLOR" "URL;VERSION;DESTINATION;TIMEOUT;INACTIVITY_TIMEOUT" "" ${ARGN})
+  cmake_parse_arguments(CMMM "ALWAYS_DOWNLOAD;NO_COLOR" "URL;VERSION;DESTINATION;TIMEOUT;INACTIVITY_TIMEOUT;VERBOSITY" "" ${ARGN})
 
   set_colors(${CMMM_NO_COLOR})
   set_property(GLOBAL PROPERTY CMMM_NO_COLOR ${CMMM_NO_COLOR})
-  set_property(GLOBAL PROPERTY CMMM_VERBOSE ${CMMM_VERBOSE})
-  set_property(GLOBAL PROPERTY CMMM_DEBUG ${CMMM_DEBUG})
+
+  if(DEFINED CMMM_VERBOSITY)
+    if(NOT CMMM_VERBOSITY STREQUAL NOTICE AND NOT CMMM_VERBOSITY STREQUAL STATUS AND NOT CMMM_VERBOSITY STREQUAL VERBOSE AND NOT CMMM_VERBOSITY STREQUAL DEBUG AND NOT CMMM_VERBOSITY STREQUAL TRACE)
+      message("${BoldYellow}## [CMakeMM] VERBOSITY ${CMMM_VERBOSITY} unknown. VERBOSITY set to STATUS. ##${Reset}")
+      set(CMMM_VERBOSITY "STATUS")
+    endif()
+  else()
+    set(CMMM_VERBOSITY "STATUS")
+  endif()
+  set_property(GLOBAL PROPERTY CMMM_VERBOSITY ${CMMM_VERBOSITY})
 
   # Parse arguments
   if(NOT DEFINED CMMM_VERSION)
@@ -69,11 +77,11 @@ function(cmmm)
   # Guard against multiple processes trying to use the PMM dir simultaneously
   file(LOCK "${CMMM_DESTINATION}" DIRECTORY GUARD PROCESS TIMEOUT 0 RESULT_VARIABLE CMMM_LOCK)
   if(NOT ${CMMM_LOCK} STREQUAL "0")
-    if(CMMM_VERBOSE)
+    if(${CMMM_VERBOSITY} STREQUAL VERBOSE)
       message("${BoldYellow}## [CMakeMM] Didn't lock the directory ${CMMM_DESTINATION} successfully (${CMMM_LOCK}). We'll continue as best we can. ##${Reset}")
     endif()
   else()
-    if(CMMM_DEBUG)
+    if(${CMMM_VERBOSITY} STREQUAL DEBUG)
       message("${BoldGreen}** [CMakeMM] Locked the directory ${CMMM_DESTINATION} successfully. **${Reset}")
     endif()
   endif()
@@ -83,9 +91,7 @@ function(cmmm)
 
   # Downloading entry.cmake
   if(NOT EXISTS "${CMMM_ENTRY_FILE}" OR ${CMMM_ALWAYS_DOWNLOAD})
-    if(${CMMM_VERBOSE} OR ${CMMM_DEBUG})
-      message("${BoldMagenta}-- [CMakeMM] Downloading CMakeMM version ${CMMM_VERSION}\n             From : ${CMMM_URL}/${CMMM_VERSION}\n             To : ${CMMM_ENTRY_FILE} --${Reset}")
-    endif()
+    message("${BoldMagenta}-- [CMakeMM] Downloading CMakeMM version ${CMMM_VERSION}\n             From : ${CMMM_URL}/${CMMM_VERSION}\n             To : ${CMMM_ENTRY_FILE} --${Reset}")
     file(DOWNLOAD "${CMMM_URL}/${CMMM_VERSION}/Entry.cmake" "${CMMM_ENTRY_FILE}.tmp" STATUS CMMM_STATUS TIMEOUT ${CMMM_TIMEOUT} INACTIVITY_TIMEOUT ${CMMM_INACTIVITY_TIMEOUT})
     list(GET CMMM_STATUS 0 CMMM_RC)
     list(GET CMMM_STATUS 1 CMMM_MSG)
@@ -104,23 +110,23 @@ function(cmmm)
 
   # This will trigger a warning if GetCMakeMM.cmake is not up-to-date
   # ^^^ DO NOT CHANGE THIS LINE vvv
-  set(CMMM_BOOTSTRAP_VERSION 1)
+  set(CMMM_BOOTSTRAP_VERSION 2)
   # ^^^ DO NOT CHANGE THIS LINE ^^^
 
   # Include Entry.cmake
   include("${CMMM_ENTRY_FILE}")
 
   # Use Entry
-  cmmm(${ARGN})
+  cmmm_entry(${ARGN})
 
   # Unlock the lock
   file(LOCK "${CMMM_DESTINATION}" DIRECTORY RESULT_VARIABLE CMMM_LOCK RELEASE)
   if(NOT ${CMMM_LOCK} STREQUAL "0")
-    if(CMMM_VERBOSE)
+    if(${CMMM_VERBOSITY} STREQUAL VERBOSE)
       message("${BoldYellow}## [CMakeMM] Didn't unlock the directory ${CMMM_DESTINATION} successfully (${CMMM_LOCK}). We'll continue as best we can. ##${Reset}")
     endif()
   else()
-    if(CMMM_DEBUG)
+    if(${CMMM_VERBOSITY} STREQUAL DEBUG)
       message("${BoldGreen}** [CMakeMM] Unlocked the directory ${CMMM_DESTINATION} successfully. **${Reset}")
     endif()
   endif()
