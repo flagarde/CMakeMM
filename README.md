@@ -9,7 +9,7 @@ This repository's main product is the GetCMakeMM.cmake file in the repository ro
 
 ### 1. Download `GetCMakeMM.cmake`
 To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://github.com/flagarde/CMakeMM/releases and put it in a place CMake can find it.
-### 2. Use `GetCMakeMM.cmake` in your `CMakeLists.txt'.
+### 2. Use `GetCMakeMM.cmake` in your `CMakeLists.txt`.
  ```cmake
 	set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 	include(GetCMakeMM)
@@ -19,7 +19,7 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
        DESTINATION "CMakeMM" 
        ALWAYS_DOWNLOAD)
  ```
- This will download `CMakeMM` version `1.0` from `https://raw.githubusercontent.com/flagarde/CMakeMM` under `CMakeMM` folder.
+ *Will download `CMakeMM` version `1.1` from https://raw.githubusercontent.com/flagarde/CMakeMM under `CMakeMM` folder.*
  
  #### Options :
  `ALWAYS_DOWNLOAD` : Always download the CMakeMM files.
@@ -46,7 +46,7 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
                    FILENAME ModuleLists
                    DESTINATION "Modules")
  ```
- This will donwload the module list file called `ModuleLists.cmake` in folder `modules` on branch `master` of the github depot `https://raw.githubusercontent.com/SDHCAL/SDHCALCMakeModules`. 
+ *Will donwload the module list file called `ModuleLists.cmake` in folder `modules` on branch `master` from the github depot `https://raw.githubusercontent.com/SDHCAL/SDHCALCMakeModules`*. 
  
  #### Options :
  `ALWAYS_DOWNLOAD` : Always download the Modules List.
@@ -65,7 +65,7 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
   ```cmake
   include(MyWonderfulModule)
   ```
-  This will download the module `MyWonderfulModule.cmake` is it's not present in the `CMAKE_MODULE_PATH` folders or `Modules` folder, then include it. Otherwise it will just include it.
+*Will download the module `MyWonderfulModule.cmake` is it's not present in the `CMAKE_MODULE_PATH` folders or `Modules` folder, then include it. Otherwise it will just include it.*
   
 ## Example
 CMakeLists.txt :
@@ -105,7 +105,7 @@ To start, add a module in the repository. This will be the module that will be i
 
 After adding the module, add a call to `cmcm_module` in the Modules List.
 
-Suppose you add a `SuperCoolModule.cmake` to `modules`. The resulting call in `modules/ModulesList.cmake` will look something like this:
+Suppose you add a `SuperCoolModule.cmake` to `modules`. The resulting call in `modules/ModulesList.cmake` will look something like this :
 
 ```cmake
 cmcm_module(
