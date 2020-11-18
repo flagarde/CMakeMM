@@ -1,5 +1,5 @@
+# Some part of Colors.cmake here to Colorize the output before it has been downloaded
 macro(set_colors CMMM_NO_COLOR)
-  # Some part of Colors.cmake here to Colorize the output before it has been downloaded
   if(NOT WIN32)
     if(NOT ${CMMM_NO_COLOR})
       string(ASCII 27 Esc)
@@ -28,13 +28,13 @@ function(cmmm)
 
   if(NOT DEFINED CMMM_TIMEOUT)
     set(CMMM_TIMEOUT 10)
-    list(APPEND ARGN TIMEOUT ${CMMM_TIMEOUT})
+    #list(APPEND ARGN TIMEOUT ${CMMM_TIMEOUT})
   endif()
   set_property(GLOBAL PROPERTY CMMM_TIMEOUT ${CMMM_TIMEOUT})
 
   if(NOT DEFINED CMMM_INACTIVITY_TIMEOUT)
     set(CMMM_INACTIVITY_TIMEOUT 5)
-    list(APPEND ARGN INACTIVITY_TIMEOUT ${CMMM_INACTIVITY_TIMEOUT})
+    #list(APPEND ARGN INACTIVITY_TIMEOUT ${CMMM_INACTIVITY_TIMEOUT})
   endif()
   set_property(GLOBAL PROPERTY CMMM_INACTIVITY_TIMEOUT ${CMMM_INACTIVITY_TIMEOUT})
 
@@ -61,7 +61,7 @@ function(cmmm)
   endif()
 
   set(CMMM_DESTINATION "${CMMM_DESTINATION}/${CMMM_VERSION}")
-  list(APPEND ARGN DESTINATION ${CMMM_DESTINATION})
+  #list(APPEND ARGN DESTINATION ${CMMM_DESTINATION})
   set_property(GLOBAL PROPERTY CMMM_DESTINATION ${CMMM_DESTINATION})
 
   #add the CMakeMM installation directory to CMAKE_MODULE_PATH
