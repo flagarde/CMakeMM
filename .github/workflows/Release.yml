@@ -16,7 +16,7 @@ jobs:
       - name: Set GetCMakeMM version by tag
         run: |
           mkdir dist
-          mv GetCMakeMM.cmake dist/GetCMakeMM.cmake 
+          mv CMakeMM.cmake  > dist/GetCPM.cmake
           
       - name: Upload GetCMakeMM to release
         uses: svenstaro/upload-release-action@v1-release
