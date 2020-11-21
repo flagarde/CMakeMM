@@ -51,7 +51,6 @@ macro(cmmm_check_and_include_file CMMM_FILENAME)
   include("${CMMM_FILE_DESTINATION}")
 endmacro()
 
-
 # Do the update check.
 function(cmmm_check_updates)
   cmake_parse_arguments(CMMM "IGNORE_NEW_VERSION" "" "" ${ARGN})
