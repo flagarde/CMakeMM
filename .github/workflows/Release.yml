@@ -2,13 +2,13 @@ on:
   push:
     # Sequence of patterns matched against refs/tags
     tags:
-    - 'v*'
+    - 'GetCMakeMM-v*'
 
-name: Release CMakeMM
+name: Release
 
 jobs:
   build:
-    name: Publish CMakeMM
+    name: Publish GetCMakeMM.cmake
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -16,11 +16,8 @@ jobs:
       - name: Set GetCMakeMM version by tag
         run: |
           mkdir dist
-          mv CMakeMM.cmake dist/CMakeMM.cmake
-          mv Changelog.cmake  dist/Changelog.cmake
-          mv Entry.cmake dist/Entry.cmake
-          mv LatestVersion.cmake  dist/LatestVersion.cmake
-
+          mv GetCMakeMM.cmake dist/GetCMakeMM.cmake 
+          
       - name: Upload GetCMakeMM to release
         uses: svenstaro/upload-release-action@v1-release
         with:
