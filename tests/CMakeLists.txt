@@ -6,6 +6,10 @@ enable_testing()
 
 file(GLOB sub-dir LIST_DIRECTORIES TRUE RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}/units/" "${CMAKE_CURRENT_SOURCE_DIR}/units/*")
 
+#Test Testings first
+list(REMOVE_ITEM sub-dir "Testings")
+message(STATUS "Adding test : Testings")
+add_test(NAME Testings COMMAND ${CMAKE_COMMAND} -DMODULES_PATH=${CMAKE_CURRENT_SOURCE_DIR}/../modules/ -S "${CMAKE_CURRENT_SOURCE_DIR}/units/Testings" -B "${CMAKE_CURRENT_BINARY_DIR}/Testings")
 
 foreach(test ${sub-dir})
   message(STATUS "Adding test : ${test}")
