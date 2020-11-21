@@ -4,7 +4,7 @@ on:
     tags:
     - 'GetCMakeMM-v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
-name: Release
+name: Upload Release Asset
 
 jobs:
   build:
