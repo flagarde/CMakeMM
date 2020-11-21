@@ -1,5 +1,4 @@
-![GitHub](https://img.shields.io/github/license/flagarde/CMakeMM) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/flagarde/CMakeMM) ![GitHub repo size](https://img.shields.io/github/repo-size/flagarde/CMakeMM) ![Release](https://github.com/flagarde/CMakeMM/workflows/Upload%20Release%20Asset/badge.svg) ![Tests Linux](https://github.com/flagarde/CMakeMM/workflows/Tests%20Linux/badge.svg) ![Tests MacOS](https://github.com/flagarde/CMakeMM/workflows/Tests%20MacOS/badge.svg) ![Tests Windows](https://github.com/flagarde/CMakeMM/workflows/Tests%20Windows/badge.svg) 
-# 📦 CMakeMM #
+# 📦 CMakeMM ![GitHub](https://img.shields.io/github/license/flagarde/CMakeMM) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/flagarde/CMakeMM) ![GitHub repo size](https://img.shields.io/github/repo-size/flagarde/CMakeMM) ![Upload Release Asset](https://github.com/flagarde/CMakeMM/workflows/Upload%20Release%20Asset/badge.svg) ![Tests Linux](https://github.com/flagarde/CMakeMM/workflows/Tests%20Linux/badge.svg) ![Tests MacOS](https://github.com/flagarde/CMakeMM/workflows/Tests%20MacOS/badge.svg) ![Tests Windows](https://github.com/flagarde/CMakeMM/workflows/Tests%20Windows/badge.svg) #
 
 CMake Modules Manager.
 
