@@ -45,7 +45,7 @@ function(cmmm)
   set_property(GLOBAL PROPERTY CMMM_INACTIVITY_TIMEOUT ${CMMM_INACTIVITY_TIMEOUT})
 
   if(NOT DEFINED CMMM_URL)
-    set(CMMM_URL "https://raw.githubusercontent.com/flagarde/CMakeMM")
+    set(CMMM_URL "https://github.com/flagarde/CMakeMM/releases/download")
     list(APPEND ARGN URL ${CMMM_URL})
   else()
     string(FIND ${CMMM_URL} "/" HAS_FLASH REVERSE)
