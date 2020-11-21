@@ -1,0 +1,22 @@
+name: Tests Linux
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Run tests
+      run: |
+        cmake -S tests -B build/tests
+        cmake --build build/tests --target Tests
