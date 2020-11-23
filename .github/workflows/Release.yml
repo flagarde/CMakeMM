@@ -15,8 +15,8 @@ jobs:
       - name: Set GetCMakeMM version by tag
         run: |
           mkdir dist
-          mv Entry.cmake > dist/Entry.cmake
-          mv CMakeMM.cmake  > dist/CMakeMM.cmake
+          mv Entry.cmake dist/Entry.cmake
+          mv CMakeMM.cmake dist/CMakeMM.cmake
       #    sed "s/CMAKEMM_VERSION/${GITHUB_REF/refs\/tags\/v}/g" GetCMakeMM.cmake > dist/GetCMakeMM.cmake
 
       - name: Upload CMakeMM to release
