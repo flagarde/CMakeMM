@@ -16,7 +16,7 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
 	include(GetCMakeMM)
 	cmmm(VERSION "1.0" 
        GIT_REPOSITORY "flagarde/CMakeMM"
-       VERBOSE 
+       VERBOSITY VERBOSE 
        DESTINATION "CMakeMM" 
        ALWAYS_DOWNLOAD)
  ```
