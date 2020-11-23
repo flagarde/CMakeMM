@@ -1,0 +1,27 @@
+name: Release GetCMakeMM
+
+on:
+  push:
+    tags:
+      - 'GetCMakeMM-v*'
+
+jobs:
+  build:
+    name: Release GetCMakeMM
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Set GetCMakeMM version by tag
+        run: |
+          mkdir dist
+          sed "s/GET_CMAKEMM_VERSION/${GITHUB_REF/refs\/tags\/GetCMakeMM-v}/g" GetCMakeMM.cmake > dist/GetCMakeMM.cmake
+
+      - name: Upload GetCMakeMM.cmake to release
+        uses: svenstaro/upload-release-action@v1-release
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref }}
+          file: dist/*.cmake
+          file_glob: true
+          overwrite: true
