@@ -110,7 +110,7 @@ function(cmmm)
 
   # This will trigger a warning if GetCMakeMM.cmake is not up-to-date
   # ^^^ DO NOT CHANGE THIS LINE vvv
-  set(CMMM_BOOTSTRAP_VERSION 2)
+  set(CMMM_BOOTSTRAP_VERSION 1)
   # ^^^ DO NOT CHANGE THIS LINE ^^^
 
   # Include Entry.cmake
