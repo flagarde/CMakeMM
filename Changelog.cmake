@@ -20,7 +20,7 @@ function(print_changelog)
 endfunction()
 
 function(check_bootstrap)
-  if(NOT DEFINED CMMM_BOOTSTRAP_VERSION OR CMMM_BOOTSTRAP_VERSION LESS 2)
+  if(NOT DEFINED CMMM_BOOTSTRAP_VERSION OR CMMM_BOOTSTRAP_VERSION LESS 1)
     message("${BoldYellow}## [CMakeMM] NOTE: GetCMakeMM.cmake has changed ! Please download a new GetCMakeMM.cmake from the CMakeMM repository. ##${Reset}")
   endif()
 endfunction()
@@ -28,8 +28,5 @@ endfunction()
 function(changelog)
   cmmm_changes(1.0
                "Initial Version"
-              )
-  cmmm_changes(1.1
-               "Some cleaning" "use VERBOSITY"
               )
 endfunction()
