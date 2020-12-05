@@ -108,7 +108,7 @@ function(cmmm)
 
   # Downloading entry.cmake
   if(NOT EXISTS "${CMMM_ENTRY_FILE}" OR ${CMMM_ALWAYS_DOWNLOAD})
-    message("${BoldMagenta}-- [CMakeMM] Downloading CMakeMM version ${CMMM_VERSION}.")
+    message("${BoldMagenta}-- [CMakeMM] Downloading CMakeMM version ${CMMM_VERSION} --${Reset}")
     message("${BoldMagenta}-- [CMakeMM] Downloading Entry.cmake\n   From : ${CMMM_GIT_URL_RELEASE}/Entry.cmake\n   To   : ${CMMM_ENTRY_FILE} --${Reset}")
     file(DOWNLOAD "${CMMM_GIT_URL_RELEASE}/Entry.cmake" "${CMMM_ENTRY_FILE}.tmp" STATUS CMMM_STATUS TIMEOUT ${CMMM_TIMEOUT} INACTIVITY_TIMEOUT ${CMMM_INACTIVITY_TIMEOUT})
     list(GET CMMM_STATUS 0 CMMM_RC)
