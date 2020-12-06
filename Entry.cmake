@@ -54,10 +54,12 @@ endmacro()
 # Do the update check.
 
 function(cmmm_changes CHANGELOG_VERSION)
+  if(${CMMM_VERSION} VERSION_LESS ${CHANGELOG_VERSION})
   message("${BoldYellow}## [CMakeMM] - Changes in ${CHANGELOG_VERSION} : ##${Reset}")
   foreach(CMMM_CHANGE IN LISTS ARGN)
     message("${BoldYellow}## [CMakeMM] - ${CMMM_CHANGE} ##${Reset}")
   endforeach()
+  endif()
 endfunction()
 
 function(print_changelog)
