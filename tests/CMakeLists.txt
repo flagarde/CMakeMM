@@ -4,6 +4,4 @@ project(CMakeMM VERSION "1.0" DESCRIPTION "CMake Modules Manager" HOMEPAGE_URL "
 
 include(../GetCMakeMM.cmake)
 
-cmmm(VERSION "1.1" GIT_REPOSITORY "flagarde/CMakeMM" DESTINATION "CMakeMM" ALWAYS_DOWNLOAD)
-
 add_subdirectory(units)
