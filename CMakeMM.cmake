@@ -111,7 +111,7 @@ function(cmmm_modules_list)
 
   set(CMMM_COMPLET_URL "${CMMM_URL}/${CMMM_BRANCH}/${CMMM_FOLDER}")
 
-  message("${BoldMagenta}-- [CMakeMM] Downloading ${CMMM_FILENAME}.cmake\n   From : ${CMMM_COMPLET_URL}/${CMMM_FILENAME}.cmake\n   To   : ${CMMM_DESTINATION_MODULES}/${CMMM_FILENAME}.cmake --${Reset}")
+  message("${BoldMagenta}-- [CMakeMM] Downloading ${CMMM_FILENAME}.cmake\n   From : ${CMMM_COMPLET_URL}${CMMM_FILENAME}.cmake\n   To   : ${CMMM_DESTINATION_MODULES}/${CMMM_FILENAME}.cmake --${Reset}")
 
   file(DOWNLOAD "${CMMM_COMPLET_URL}/${CMMM_FILENAME}.cmake" "${CMMM_DESTINATION_MODULES}/${CMMM_FILENAME}Temp.cmake" INACTIVITY_TIMEOUT ${CMMM_INACTIVITY_TIMEOUT} STATUS CMAKECM_STATUS TIMEOUT ${CMMM_TIMEOUT})
   list(GET CMAKECM_STATUS 0 CMAKECM_CODE)
