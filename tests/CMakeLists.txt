@@ -4,7 +4,7 @@ project(CMakeMM VERSION "1.0" DESCRIPTION "CMake Modules Manager" HOMEPAGE_URL "
 
 include(../GetCMakeMM.cmake)
 
-cmmm(VERSION "1.0" GIT_REPOSITORY "flagarde/CMakeMM" DESTINATION "CMakeMM" ALWAYS_DOWNLOAD)
+cmmm(VERSION "1.1" GIT_REPOSITORY "flagarde/CMakeMM" DESTINATION "CMakeMM" ALWAYS_DOWNLOAD)
 
 cmmm_modules_list(URL "https://raw.githubusercontent.com/flagarde/CMakeCM"
                   FILENAME ModulesList
