@@ -19,4 +19,3 @@ jobs:
     - name: Run tests
       run: |
         cmake -S tests -B build/tests
-        cmake --build build/tests --target Tests
