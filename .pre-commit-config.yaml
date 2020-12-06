@@ -1,23 +1,18 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
 repos:
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v3.3.0
-  hooks:
-  - id: check-added-large-files
-  - id: check-json
-  - id: pretty-format-json
-  - id: check-merge-conflict
-  - id: check-symlinks
-  - id: check-toml
-  - id: check-xml
-  - id: check-yaml
-  - id: detect-private-key
-  - id: end-of-file-fixer
-  - id: forbid-new-submodules
-  - id: trailing-whitespace
-  - id: fix-byte-order-marker
-
-- repo: https://github.com/cheshirekow/cmake-format-precommit
-  rev: v0.6.10
-  hooks:
-  - id: cmake-format
-  - id: cmake-lint
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.3.0
+    hooks:
+    -   id: check-added-large-files
+    -   id: check-json
+    -   id: pretty-format-json
+    -   id: check-merge-conflict
+    -   id: check-symlinks
+    -   id: check-toml
+    -   id: check-xml
+    -   id: detect-private-key
+    -   id: end-of-file-fixer
+    -   id: forbid-new-submodules
+    -   id: trailing-whitespace
+    -   id: fix-byte-order-marker
