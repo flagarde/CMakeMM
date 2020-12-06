@@ -120,7 +120,7 @@ cmcm_module(SuperCoolModule.cmake
 
 The `VERSION` argument is an arbitrary string that is used to invalidate local copies of the module that have been downloaded.
 
-*The path to teh LOCAL module is taken from the `root` of the `Git` `branch`, not the relative path of the `FOLDER` argument in `cmmm_modules_list`.*
+*The path to the LOCAL module is taken from the `root` of the `Git` `branch`, not the relative path of the `FOLDER` argument in `cmmm_modules_list`.*
 
 ### ➕ Adding a "Remote" Module
 
