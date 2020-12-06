@@ -1,5 +1,11 @@
 function(cmcm_module ARG_NAME)
   cmake_parse_arguments(ARG "" "REMOTE;LOCAL;VERSION" "ALSO" "${ARGV}")
+  get_property(CMMM_NO_COLOR GLOBAL PROPERTY CMMM_NO_COLOR)
+  if(NOT ${CMMM_NO_COLOR})
+    colors(TRUE)
+  else()
+    colors(FALSE)
+  endif()
   if(NOT ARG_REMOTE AND NOT ARG_LOCAL)
     message("${BoldRed}!! [CMakeCM] Either LOCAL or REMOTE is required for cmmm_module !!${Reset}")
     message(FATAL_ERROR)
@@ -18,7 +24,6 @@ function(cmcm_module ARG_NAME)
 endfunction()
 
 macro(cmmm_include_module MODULE_NAME MODULE_URL version also)
-
   get_property(CMMM_NO_COLOR GLOBAL PROPERTY CMMM_NO_COLOR)
   if(NOT ${CMMM_NO_COLOR})
     colors(TRUE)
@@ -105,7 +110,8 @@ function(cmmm_modules_list)
   set_property(GLOBAL PROPERTY CMMM_URL_MODULES "${CMMM_URL}/${CMMM_BRANCH}")
 
   set(CMMM_COMPLET_URL "${CMMM_URL}/${CMMM_BRANCH}/${CMMM_FOLDER}")
-  message("${BoldMagenta}-- [CMakeMM] Downloading ${CMMM_FILENAME}.cmake\n             From : ${CMMM_COMPLET_URL}\n             To : ${CMMM_DESTINATION_MODULES} --${Reset}")
+
+  message("${BoldMagenta}-- [CMakeMM] Downloading ${CMMM_FILENAME}.cmake\n   From : ${CMMM_COMPLET_URL}/${CMMM_FILENAME}.cmake\n   To   : ${CMMM_DESTINATION_MODULES}/${CMMM_FILENAME}.cmake --${Reset}")
 
   file(DOWNLOAD "${CMMM_COMPLET_URL}/${CMMM_FILENAME}.cmake" "${CMMM_DESTINATION_MODULES}/${CMMM_FILENAME}Temp.cmake" INACTIVITY_TIMEOUT ${CMMM_INACTIVITY_TIMEOUT} STATUS CMAKECM_STATUS TIMEOUT ${CMMM_TIMEOUT})
   list(GET CMAKECM_STATUS 0 CMAKECM_CODE)
