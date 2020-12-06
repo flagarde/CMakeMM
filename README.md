@@ -14,69 +14,69 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
  ```cmake
 	set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 	include(GetCMakeMM)
-	cmmm(VERSION "1.0" 
+	cmmm(VERSION "1.0"
        GIT_REPOSITORY "flagarde/CMakeMM"
-       VERBOSITY VERBOSE 
-       DESTINATION "CMakeMM" 
+       VERBOSITY VERBOSE
+       DESTINATION "CMakeMM"
        ALWAYS_DOWNLOAD)
  ```
  *Will download `CMakeMM` from the release version `1.0` in flagarde/CMakeMM repository under `CMakeMM` folder.*
- 
+
  #### Options :
  `ALWAYS_DOWNLOAD` : Always download the CMakeMM files.
- 
+
  `NO_COLOR` : Turn out the color.
- 
+
  `GIT_REPOSITORY` : Repository where to download CMakeMM.
- 
+
  `VERSION` : Version of CMakeMM to download.
- 
+
  `DESTINATION` : Where to install CMakeMM.
- 
+
  `TIMEOUT` : Terminate the operation after a given total time has elapsed.
- 
+
  `INACTIVITY_TIMEOUT` : Terminate the operation after a period of inactivity.
- 
+
  `VERBOSITY` : Verbosity of CMakeMM `NOTICE`, `STATUS`, `VERBOSE`, `DEBUG` and `TRACE`.
- 
+
  `IGNORE_NEW_VERSION` : Ignore new versions of `CMakeMM`.
- 
+
  ### 3️⃣ Tell to `CMakeMM` where to find the modules list and where to save the modules
  ```cmake
- cmmm_modules_list(URL "https://raw.githubusercontent.com/SDHCAL/SDHCALCMakeModules" 
+ cmmm_modules_list(URL "https://raw.githubusercontent.com/SDHCAL/SDHCALCMakeModules"
                    BRANCH master
                    FOLDER modules
                    FILENAME ModuleLists
                    DESTINATION "Modules")
  ```
- *Will donwload the module list file called `ModuleLists.cmake` in folder `modules` on branch `master` from the github depot `https://raw.githubusercontent.com/SDHCAL/SDHCALCMakeModules`*. 
- 
+ *Will donwload the module list file called `ModuleLists.cmake` in folder `modules` on branch `master` from the github depot `https://raw.githubusercontent.com/SDHCAL/SDHCALCMakeModules`*.
+
  #### Options :
  `ALWAYS_DOWNLOAD` : Always download the Modules List.
- 
+
  `URL` : URL where to download the Modules List (`https://raw.githubusercontent.com/flagarde/CMakeMM` per default).
- 
+
  `BRANCH` : Branch where to download the Modules List (`master` per default).
- 
+
  `FOLDER` : Folder where to download the Modules List.
- 
+
  `FILENAME` : Name of the Modules List file.
- 
+
  `DESTINATION` : Where to install the Modules.
- 
+
  ### 4️⃣ Include the modules you need
   ```cmake
   include(MyWonderfulModule)
   ```
 *Will download the module `MyWonderfulModule.cmake` is it's not present in the `CMAKE_MODULE_PATH` folders or `Modules` folder, then include it. Otherwise it will just include it.*
-  
+
 ## ⚗  Example
 CMakeLists.txt :
 ```cmake
 cmake_minimum_required(VERSION 3.10...3.17.2 FATAL_ERROR)
-project(MySoftware 
-        VERSION "0.0.1.0" 
-        DESCRIPTION "MySoftware" 
+project(MySoftware
+        VERSION "0.0.1.0"
+        DESCRIPTION "MySoftware"
         HOMEPAGE_URL "https://github.com/SDHCAL/MySoftware"
         LANGUAGES CXX)
 
@@ -84,7 +84,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake"
 
 include(GetCMakeMM)
 
-cmmm(VERSION "1.0" 
+cmmm(VERSION "1.0"
      GIT_REPOSITORY "flagarde/CMakeMM"
      VERBOSE
      DESTINATION "CMakeMM"
