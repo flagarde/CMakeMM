@@ -79,7 +79,7 @@ endfunction()
 function(cmmm_check_updates)
   cmake_parse_arguments(CMMM "IGNORE_NEW_VERSION" "" "" ${ARGN})
   get_property(CMMM_GIT_REPOSITORY GLOBAL PROPERTY CMMM_GIT_URL_RELEASE)
-  set(CMMM_GIT_URL "https://raw.githubusercontent.com/${CMMM_GIT_URL_RELEASE}/master/")
+  set(CMMM_GIT_URL "https://raw.githubusercontent.com/${CMMM_GIT_URL_RELEASE}/master")
   # LatestVersion and Changelog must be up-to-date so must be in master
   set(CMMM_LATEST_VERSION_URL "${CMMM_GIT_URL}/LatestVersion.cmake")
   set(CMMM_LATEST_VERSION_FILE "${CMMM_DESTINATION}/LatestVersion.cmake")
