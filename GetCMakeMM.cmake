@@ -38,7 +38,21 @@ function(cmmm)
   endif()
   set_property(GLOBAL PROPERTY CMMM_NO_COLOR ${CMMM_NO_COLOR})
 
-  list(INSERT VERBOSITY 0 "FATAL_ERROR" "SEND_ERROR" "WARNING" "AUTHOR_WARNING" "DEPRECATION" "NOTICE" "STATUS" "VERBOSE" "DEBUG" "TRACE")
+  list(
+    INSERT
+    VERBOSITY
+    0
+    "FATAL_ERROR"
+    "SEND_ERROR"
+    "WARNING"
+    "AUTHOR_WARNING"
+    "DEPRECATION"
+    "NOTICE"
+    "STATUS"
+    "VERBOSE"
+    "DEBUG"
+    "TRACE"
+    )
   if(DEFINED CMMM_VERBOSITY)
     list(FIND VERBOSITY ${CMMM_VERBOSITY} FOUND)
     if(${FOUND} STREQUAL "-1")
@@ -86,7 +100,7 @@ function(cmmm)
   set(CMMM_DESTINATION "${CMMM_DESTINATION}/${CMMM_VERSION}")
   set_property(GLOBAL PROPERTY CMMM_DESTINATION ${CMMM_DESTINATION})
 
-  #add the CMakeMM installation directory to CMAKE_MODULE_PATH
+  # add the CMakeMM installation directory to CMAKE_MODULE_PATH
   list(INSERT CMAKE_MODULE_PATH 0 "${CMMM_DESTINATION}")
   list(REMOVE_DUPLICATES CMAKE_MODULE_PATH)
   set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" PARENT_SCOPE)
@@ -126,8 +140,7 @@ function(cmmm)
     endif()
   endif()
 
-  # This will trigger a warning if GetCMakeMM.cmake is not up-to-date
-  # ^^^ DO NOT CHANGE THIS LINE vvv
+  # This will trigger a warning if GetCMakeMM.cmake is not up-to-date ^^^ DO NOT CHANGE THIS LINE vvv
   set(CMMM_BOOTSTRAP_VERSION GET_CMAKEMM_VERSION)
   # ^^^ DO NOT CHANGE THIS LINE ^^^
 

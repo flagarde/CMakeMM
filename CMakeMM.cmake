@@ -77,12 +77,12 @@ function(cmmm_modules_list)
   get_property(CMMM_INACTIVITY_TIMEOUT GLOBAL PROPERTY CMMM_INACTIVITY_TIMEOUT)
   get_property(CMMM_TIMEOUT GLOBAL PROPERTY CMMM_TIMEOUT)
 
-  #Default modules list name
+  # Default modules list name
   if(NOT DEFINED CMMM_FILENAME)
     set(CMMM_FILENAME "ModulesList")
   endif()
 
-  #Set default URL
+  # Set default URL
   if(NOT DEFINED CMMM_URL)
     get_property(CMMM_URL GLOBAL PROPERTY CMMM_URL)
   endif()
@@ -95,7 +95,7 @@ function(cmmm_modules_list)
 
   get_property(CMMM_INSTALL_DESTINATION GLOBAL PROPERTY CMMM_DESTINATION)
 
-  #Set default modules installation folders
+  # Set default modules installation folders
   if(NOT DEFINED CMMM_DESTINATION)
     set(CMMM_DESTINATION_MODULES "${CMMM_INSTALL_DESTINATION}/Modules")
   else()
