@@ -1,4 +1,4 @@
- parse:
+parse:
   additional_commands:
     cc_binary:
       kwargs:
