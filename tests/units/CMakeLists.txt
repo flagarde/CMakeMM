@@ -1,4 +1,5 @@
 add_subdirectory(OldVersion)
+add_subdirectory(OldVersionIgnore)
 
 cmmm(VERSION "${CMMM_LATEST_VERSION}" GIT_REPOSITORY "flagarde/CMakeMM" DESTINATION "CMakeMM" ALWAYS_DOWNLOAD)
 add_subdirectory(Default)
