@@ -114,8 +114,7 @@ Suppose you add a `SuperCoolModule.cmake` to `modules`. The resulting call in `m
 ```cmake
 cmcm_module(SuperCoolModule.cmake
             LOCAL modules/SuperCoolModule.cmake
-            VERSION 1
-           )
+            VERSION 1)
 ```
 
 The `VERSION` argument is an arbitrary string that is used to invalidate local copies of the module that have been downloaded.
@@ -129,8 +128,7 @@ If you have a module that you wish to add, but it is contained in a remote locat
 ```cmake
 cmcm_module(MyAwesomeModule.cmake
             REMOTE https://some-place.example.com/files/path/MyAwesomeModule.cmake
-            VERSION 1
-           )
+            VERSION 1)
 ```
 
 The `VERSION` argument is an arbitrary string that is used to invalidate local copies of the module that have been downloaded.
