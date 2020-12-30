@@ -1,4 +1,4 @@
-cmmm_modules_list(URL "https://raw.githubusercontent.com/TestingRepositories/ModulesListTest/" DESTINATION "Modules" FOLDER "List" BRANCH "main")
+cmmm_modules_list(GIT_REPOSITORY "TestingRepositories/ModulesListTest/" DESTINATION "Modules" FOLDER "List" BRANCH "main")
 
 include(Module3)
 

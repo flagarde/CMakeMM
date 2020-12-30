@@ -1,4 +1,4 @@
-cmmm_modules_list(URL "https://raw.githubusercontent.com/TestingRepositories/ModulesListTest/" DESTINATION "Modules" FILENAME "ModulesList2")
+cmmm_modules_list(GIT_REPOSITORY "TestingRepositories/ModulesListTest/" DESTINATION "Modules" FILENAME "ModulesList2")
 
 include(Module2)
 
