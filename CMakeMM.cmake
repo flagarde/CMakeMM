@@ -60,7 +60,7 @@ macro(cmmm_include_module MODULE_NAME MODULE_URL version also)
 endmacro()
 
 function(cmmm_modules_list)
-  cmake_parse_arguments(CMMM "ALWAYS_DOWNLOAD" "URL;BRANCH;FOLDER;FILENAME;DESTINATION" "" "${ARGV}")
+  cmake_parse_arguments(CMMM "ALWAYS_DOWNLOAD" "URL;GIT_REPOSITORY;BRANCH;FOLDER;FILENAME;DESTINATION" "" "${ARGV}")
 
   get_property(CMMM_NO_COLOR GLOBAL PROPERTY CMMM_NO_COLOR)
   if(NOT ${CMMM_NO_COLOR})
@@ -76,18 +76,29 @@ function(cmmm_modules_list)
   endif()
 
   # Set default URL
-  if(NOT DEFINED CMMM_URL)
-    get_property(CMMM_URL GLOBAL PROPERTY CMMM_URL)
+  if(DEFINED CMMM_URL AND DEFINED CMMM_GIT_REPOSITORY)
+    message("${BoldRed}!! [CMakeMM] URL and GIT_REPOSITORY can not appear at the same time !!${Reset}")
+    message(FATAL_ERROR)
   endif()
-  string(FIND ${CMMM_URL} "/" HAS_FLASH REVERSE)
-  string(LENGTH ${CMMM_URL} CMMM_URL_LENGTH)
-  math(EXPR HAS_FLASH_PLUS_ONE ${HAS_FLASH}+1)
-  if(${HAS_FLASH_PLUS_ONE} STREQUAL ${CMMM_URL_LENGTH})
-    string(SUBSTRING ${CMMM_URL} 0 ${HAS_FLASH} CMMM_URL)
+
+  if(DEFINED CMMM_URL)
+    string(FIND ${CMMM_URL} "/" HAS_FLASH REVERSE)
+    string(LENGTH ${CMMM_URL} CMMM_URL_LENGTH)
+    math(EXPR HAS_FLASH_PLUS_ONE ${HAS_FLASH}+1)
+    if(${HAS_FLASH_PLUS_ONE} STREQUAL ${CMMM_URL_LENGTH})
+      string(SUBSTRING ${CMMM_URL} 0 ${HAS_FLASH} CMMM_URL)
+    endif()
   endif()
+
+  if(DEFINED CMMM_GIT_REPOSITORY)
+    if(NOT DEFINED CMMM_BRANCH)
+      set(CMMM_BRANCH "master")
+    endif()
+    set(CMMM_URL "https://cdn.jsdelivr.net/gh/${CMMM_GIT_REPOSITORY}@${CMMM_BRANCH}")
+  endif()
+  set_property(GLOBAL PROPERTY CMMM_URL_MODULES "${CMMM_URL}")
 
   get_property(CMMM_INSTALL_DESTINATION GLOBAL PROPERTY CMMM_DESTINATION)
-
   # Set default modules installation folders
   if(NOT DEFINED CMMM_DESTINATION)
     set(CMMM_DESTINATION_MODULES "${CMMM_INSTALL_DESTINATION}/Modules")
@@ -96,16 +107,10 @@ function(cmmm_modules_list)
   endif()
   set_property(GLOBAL PROPERTY CMMM_DESTINATION_MODULES ${CMMM_DESTINATION_MODULES})
 
-  if(NOT DEFINED CMMM_BRANCH)
-    set(CMMM_BRANCH "master")
-  endif()
-
-  set_property(GLOBAL PROPERTY CMMM_URL_MODULES "${CMMM_URL}/${CMMM_BRANCH}")
-
   if(NOT DEFINED CMMM_FOLDER)
-    set(CMMM_COMPLET_URL "${CMMM_URL}/${CMMM_BRANCH}")
+    set(CMMM_COMPLET_URL "${CMMM_URL}")
   else()
-    set(CMMM_COMPLET_URL "${CMMM_URL}/${CMMM_BRANCH}/${CMMM_FOLDER}")
+    set(CMMM_COMPLET_URL "${CMMM_URL}/${CMMM_FOLDER}")
   endif()
 
   message("${BoldMagenta}-- [CMakeMM] Downloading ${CMMM_FILENAME}.cmake\n   From : ${CMMM_COMPLET_URL}/${CMMM_FILENAME}.cmake\n   To   : ${CMMM_DESTINATION_MODULES}/${CMMM_FILENAME}.cmake --${Reset}")
