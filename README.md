@@ -55,6 +55,8 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
  `ALWAYS_DOWNLOAD` : Always download the Modules List.
 
  `URL` : URL where to download the Modules List (`https://raw.githubusercontent.com/flagarde/CMakeMM` per default).
+ 
+ `GIT_REPOSITORY` : github repository to download the Modules List (`flagarde/CMakeMM` for example).
 
  `BRANCH` : Branch where to download the Modules List (`master` per default).
 
