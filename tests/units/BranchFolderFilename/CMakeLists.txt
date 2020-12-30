@@ -1,6 +1,6 @@
 cmmm_modules_list(
-  URL
-  "https://raw.githubusercontent.com/TestingRepositories/ModulesListTest/"
+  GIT_REPOSITORY
+  "TestingRepositories/ModulesListTest/"
   DESTINATION
   "Modules"
   FOLDER
