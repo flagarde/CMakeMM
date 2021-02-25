@@ -288,7 +288,7 @@ macro(cmmm_entry)
 
   message(STATUS "***** ${CMAKE_MODULE_PATH}")
 
-  cmmm_check_updates(REPOSITORY ${CMM_REPOSITORY})
+  cmmm_check_updates(${ARGN})
 
 endmacro()
 
