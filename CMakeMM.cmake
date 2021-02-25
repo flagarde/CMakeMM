@@ -38,9 +38,8 @@ function(print_changelog)
 endfunction()
 
 function(cmmm_check_updates)
-  cmake_parse_arguments(CMMM "IGNORE_NEW_VERSION" "" "" ${ARGN})
-  get_property(CMMM_GIT_REPOSITORY GLOBAL PROPERTY CMMM_GIT_REPOSITORY)
-  set(CMMM_GIT_URL "https://cdn.jsdelivr.net/gh/${CMMM_GIT_REPOSITORY}@master")
+  cmake_parse_arguments(CMMM "IGNORE_NEW_VERSION" "REPOSITORY" "" ${ARGN})
+  set(CMMM_GIT_URL "https://cdn.jsdelivr.net/gh/${CMMM_REPOSITORY}@master")
   # LatestVersion and Changelog must be up-to-date so must be in master
   set(CMMM_LATEST_VERSION_URL "${CMMM_GIT_URL}/LatestVersion.cmake")
   set(CMMM_LATEST_VERSION_FILE "${CMMM_DESTINATION}/LatestVersion.cmake")
@@ -289,7 +288,7 @@ macro(cmmm_entry)
 
   message(STATUS "***** ${CMAKE_MODULE_PATH}")
 
-  cmmm_check_updates()
+  cmmm_check_updates(REPOSITORY ${CMM_REPOSITORY})
 
 endmacro()
 
