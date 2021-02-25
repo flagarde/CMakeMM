@@ -1,3 +1,19 @@
+include_guard(GLOBAL)
+
+if(NOT COMMAND colors)
+  # Colorize
+  macro(colors)
+    if(NOT WIN32)
+        string(ASCII 27 Esc)
+        set(Reset "${Esc}[m")
+        set(BoldRed "${Esc}[1;31m")
+        set(BoldMagenta "${Esc}[1;35m")
+        set(BoldYellow "${Esc}[1;33m")
+        set(BoldGreen "${Esc}[1;32m")
+    endif()
+  endmacro()
+endif()
+
 function(cmmm_download)
   cmake_parse_arguments(CMMM "" "URL;DESTINATION" "" "${ARGN}")
   get_property(CMMM_GIT_URL_RELEASE GLOBAL PROPERTY CMMM_GIT_URL_RELEASE)
@@ -63,12 +79,14 @@ function(cmmm_changes CHANGELOG_VERSION)
 endfunction()
 
 function(print_changelog)
-  if(NOT ${CMMM_VERSION} STREQUAL ${CMMM_LATEST_VERSION})
-    message("${BoldYellow}## [CMakeMM] Using CMakeMM version ${CMMM_VERSION}. The latest is ${CMMM_LATEST_VERSION}. ##${Reset}")
-    message("${BoldYellow}## [CMakeMM] Changes since ${CMMM_VERSION} include the following : ##${Reset}")
-    changelog()
-    message("${BoldYellow}## [CMakeMM] To update, simply change the value of VERSION in cmmm function. ##${Reset}")
-    message("${BoldYellow}## [CMakeMM] You can disable these messages by setting IGNORE_NEW_VERSION in cmmm function. ##${Reset}")
+  if(NOT ${CMMM_VERSION} STREQUAL "master" AND NOT ${CMMM_VERSION} STREQUAL "main")
+    if(NOT ${CMMM_VERSION} STREQUAL ${CMMM_LATEST_VERSION})
+      message("${BoldYellow}## [CMakeMM] Using CMakeMM version ${CMMM_VERSION}. The latest is ${CMMM_LATEST_VERSION}. ##${Reset}")
+      message("${BoldYellow}## [CMakeMM] Changes since ${CMMM_VERSION} include the following : ##${Reset}")
+      changelog()
+      message("${BoldYellow}## [CMakeMM] To update, simply change the value of VERSION in cmmm function. ##${Reset}")
+      message("${BoldYellow}## [CMakeMM] You can disable these messages by setting IGNORE_NEW_VERSION in cmmm function. ##${Reset}")
+    endif()
   endif()
 endfunction()
 
@@ -109,7 +127,86 @@ function(cmmm_check_updates)
   endif()
 endfunction()
 
-function(cmmm_entry)
+function(cmmm)
+  cmake_parse_arguments(CMMM "ALWAYS_DOWNLOAD;NO_COLOR" "GIT_REPOSITORY;VERSION;DESTINATION;TIMEOUT;INACTIVITY_TIMEOUT;VERBOSITY" "" ${ARGN})
+
+  if(NOT ${CMMM_NO_COLOR})
+    colors()
+  endif()
+  set_property(GLOBAL PROPERTY CMMM_NO_COLOR ${CMMM_NO_COLOR})
+
+  list(
+    INSERT
+    VERBOSITY
+    0
+    "FATAL_ERROR"
+    "SEND_ERROR"
+    "WARNING"
+    "AUTHOR_WARNING"
+    "DEPRECATION"
+    "NOTICE"
+    "STATUS"
+    "VERBOSE"
+    "DEBUG"
+    "TRACE"
+    )
+  if(DEFINED CMMM_VERBOSITY)
+    list(FIND VERBOSITY ${CMMM_VERBOSITY} FOUND)
+    if(${FOUND} STREQUAL "-1")
+      message("${BoldYellow}## [CMakeMM] VERBOSITY ${CMMM_VERBOSITY} unknown. VERBOSITY set to STATUS. ##${Reset}")
+      set(CMMM_VERBOSITY "STATUS")
+    endif()
+  elseif(DEFINED CMAKE_MESSAGE_LOG_LEVEL)
+    list(FIND VERBOSITY ${CMAKE_MESSAGE_LOG_LEVEL} FOUND)
+    if(${FOUND} STREQUAL "-1")
+      message("${BoldYellow}## [CMakeMM] VERBOSITY ${CMAKE_MESSAGE_LOG_LEVEL} unknown. VERBOSITY set to STATUS. ##${Reset}")
+      set(CMMM_VERBOSITY "STATUS")
+    else()
+      set(CMMM_VERBOSITY ${CMAKE_MESSAGE_LOG_LEVEL})
+    endif()
+  else()
+    set(CMMM_VERBOSITY "STATUS")
+  endif()
+  set_property(GLOBAL PROPERTY CMMM_VERBOSITY ${CMMM_VERBOSITY})
+
+  if(NOT DEFINED CMMM_TIMEOUT)
+    set(CMMM_TIMEOUT 10)
+  endif()
+  set_property(GLOBAL PROPERTY CMMM_TIMEOUT ${CMMM_TIMEOUT})
+
+  if(NOT DEFINED CMMM_INACTIVITY_TIMEOUT)
+    set(CMMM_INACTIVITY_TIMEOUT 5)
+  endif()
+  set_property(GLOBAL PROPERTY CMMM_INACTIVITY_TIMEOUT ${CMMM_INACTIVITY_TIMEOUT})
+
+  if(NOT DEFINED CMMM_GIT_REPOSITORY)
+    set(CMMM_GIT_REPOSITORY "flagarde/CMakeMM")
+    list(APPEND ARGN URL ${CMMM_GIT_REPOSITORY})
+  endif()
+  set_property(GLOBAL PROPERTY CMMM_GIT_REPOSITORY ${CMMM_GIT_REPOSITORY})
+
+  set(CMMM_GIT_URL_RELEASE "https://github.com/${CMMM_GIT_REPOSITORY}/releases/download/v${CMMM_VERSION}")
+  set_property(GLOBAL PROPERTY CMMM_GIT_URL_RELEASE ${CMMM_GIT_URL_RELEASE})
+
+  if(NOT DEFINED CMMM_DESTINATION)
+    set(CMMM_DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/CMakeMM")
+  else()
+    get_filename_component(CMMM_DESTINATION "${CMMM_DESTINATION}" ABSOLUTE BASE_DIR ${CMAKE_CURRENT_BINARY_DIR})
+  endif()
+
+  set(CMMM_DESTINATION "${CMMM_DESTINATION}/${CMMM_VERSION}")
+  set_property(GLOBAL PROPERTY CMMM_DESTINATION ${CMMM_DESTINATION})
+
+  # add the CMakeMM installation directory to CMAKE_MODULE_PATH
+  list(INSERT CMAKE_MODULE_PATH 0 "${CMMM_DESTINATION}")
+  list(REMOVE_DUPLICATES CMAKE_MODULE_PATH)
+  set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" PARENT_SCOPE)
+
+  # This will trigger a warning if GetCMakeMM.cmake is not up-to-date ^^^ DO NOT CHANGE THIS LINE vvv
+  set(CMMM_BOOTSTRAP_VERSION GET_CMAKEMM_VERSION)
+  # ^^^ DO NOT CHANGE THIS LINE ^^^
+
   cmmm_check_updates()
-  cmmm_check_and_include_file(CMakeMM.cmake)
+  include(CMakeMM)
+
 endfunction()

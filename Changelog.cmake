@@ -1,7 +1,3 @@
 function(changelog)
-  cmmm_changes(0.9 "Pre-version")
-  cmmm_changes(1.0 "Initial Version")
-  cmmm_changes(1.1 "Fix some color issues" "Some typos")
-  cmmm_changes(1.2 "Change to jsdelivr")
-  cmmm_changes(1.3 "Add GIT_REPOSITORY option")
+  cmmm_changes(1.0 "Initial version")
 endfunction()
