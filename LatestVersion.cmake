@@ -1,1 +1,0 @@
-set(CMMM_LATEST_VERSION "0.9")
