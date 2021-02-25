@@ -286,10 +286,5 @@ macro(cmmm_entry)
   list(REMOVE_DUPLICATES CMAKE_MODULE_PATH)
   set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" PARENT_SCOPE)
 
-  message(STATUS "***** ${CMAKE_MODULE_PATH}")
-
   cmmm_check_updates(${ARGN})
-
 endmacro()
-
-
