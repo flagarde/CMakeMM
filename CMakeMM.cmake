@@ -14,59 +14,6 @@ if(NOT COMMAND colors)
   endmacro()
 endif()
 
-function(cmmm_download)
-  cmake_parse_arguments(CMMM "" "URL;DESTINATION" "" "${ARGN}")
-  get_property(CMMM_GIT_URL_RELEASE GLOBAL PROPERTY CMMM_GIT_URL_RELEASE)
-  set(CMMM_DESTINATION_TMP "${CMMM_DESTINATION}.tmp")
-
-  # Guard against multiple processes trying to use the PMM dir simultaneously
-  file(LOCK "${CMMM_DESTINATION}.lock" GUARD PROCESS TIMEOUT 0 RESULT_VARIABLE CMMM_LOCK)
-  if(NOT ${CMMM_LOCK} STREQUAL "0")
-    if(${CMMM_VERBOSITY} STREQUAL VERBOSE)
-      message("${BoldYellow}## [CMakeMM] Fail to lock the directory ${CMMM_DESTINATION} (${CMMM_LOCK}). ##${Reset}")
-    endif()
-  else()
-    if(${CMMM_VERBOSITY} STREQUAL DEBUG)
-      message("${BoldGreen}** [CMakeMM] Directory ${CMMM_DESTINATION} locked successfully. **${Reset}")
-    endif()
-  endif()
-
-  message("${BoldMagenta}-- [CMakeMM] Downloading ${CMMM_URL}\n   From : ${CMMM_GIT_URL_RELEASE}/${CMMM_URL}\n   To   : ${CMMM_DESTINATION} --${Reset}")
-
-  file(DOWNLOAD "${CMMM_GIT_URL_RELEASE}/${CMMM_URL}" "${CMMM_DESTINATION_TMP}" STATUS CMMM_STATUS TIMEOUT ${CMMM_TIMEOUT} INACTIVITY_TIMEOUT ${CMMM_INACTIVITY_TIMEOUT})
-  list(GET CMMM_STATUS 0 CMMM_RC)
-  list(GET CMMM_STATUS 1 CMMM_MSG)
-  if(CMMM_RC)
-    file(REMOVE "${CMMM_DESTINATION_TMP}")
-    if(NOT EXISTS "${CMMM_DESTINATION}")
-      message("${BoldRed}!! Error while downloading file '${CMMM_URL}' to '${CMMM_DESTINATION}' [${CMMM_RC}]: ${CMMM_MSG} !!${Reset}")
-      message(FATAL_ERROR)
-    endif()
-  else()
-    file(RENAME "${CMMM_DESTINATION_TMP}" "${CMMM_DESTINATION}")
-  endif()
-
-  # Unlock the lock
-  file(LOCK "${CMMM_DESTINATION}.lock" RESULT_VARIABLE CMMM_LOCK RELEASE)
-  if(NOT ${CMMM_LOCK} STREQUAL "0")
-    if(${CMMM_VERBOSITY} STREQUAL VERBOSE)
-      message("${BoldYellow}## [CMakeMM] Fail to unlock the directory ${CMMM_DESTINATION} (${CMMM_LOCK}). ##${Reset}")
-    endif()
-  else()
-    if(${CMMM_VERBOSITY} STREQUAL DEBUG)
-      message("${BoldGreen}** [CMakeMM] Directory ${CMMM_DESTINATION} unlocked successfully. **${Reset}")
-    endif()
-  endif()
-endfunction()
-
-macro(cmmm_check_and_include_file CMMM_FILENAME)
-  get_filename_component(CMMM_FILE_DESTINATION "${CMMM_DESTINATION}/${CMMM_FILENAME}" ABSOLUTE)
-  if(NOT EXISTS "${CMMM_FILE_DESTINATION}" OR CMMM_ALWAYS_DOWNLOAD)
-    cmmm_download(URL "${CMMM_FILENAME}" DESTINATION "${CMMM_FILE_DESTINATION}")
-  endif()
-  include("${CMMM_FILE_DESTINATION}")
-endmacro()
-
 # Do the update check.
 
 function(cmmm_changes CHANGELOG_VERSION)
@@ -274,7 +221,7 @@ function(cmmm_modules_list)
 endfunction()
 
 macro(cmmm_entry)
-  cmake_parse_arguments(CMMM "ALWAYS_DOWNLOAD;NO_COLOR" "GIT_REPOSITORY;VERSION;DESTINATION;TIMEOUT;INACTIVITY_TIMEOUT;VERBOSITY" "" ${ARGN})
+  cmake_parse_arguments(CMMM "ALWAYS_DOWNLOAD;NO_COLOR" "REPOSITORY;VERSION;DESTINATION;TIMEOUT;INACTIVITY_TIMEOUT;VERBOSITY" "" ${ARGN})
 
   if(NOT ${CMMM_NO_COLOR})
     colors()
@@ -296,6 +243,7 @@ macro(cmmm_entry)
     "DEBUG"
     "TRACE"
     )
+
   if(DEFINED CMMM_VERBOSITY)
     list(FIND VERBOSITY ${CMMM_VERBOSITY} FOUND)
     if(${FOUND} STREQUAL "-1")
@@ -324,15 +272,6 @@ macro(cmmm_entry)
     set(CMMM_INACTIVITY_TIMEOUT 5)
   endif()
   set_property(GLOBAL PROPERTY CMMM_INACTIVITY_TIMEOUT ${CMMM_INACTIVITY_TIMEOUT})
-
-  if(NOT DEFINED CMMM_GIT_REPOSITORY)
-    set(CMMM_GIT_REPOSITORY "flagarde/CMakeMM")
-    list(APPEND ARGN URL ${CMMM_GIT_REPOSITORY})
-  endif()
-  set_property(GLOBAL PROPERTY CMMM_GIT_REPOSITORY ${CMMM_GIT_REPOSITORY})
-
-  set(CMMM_GIT_URL_RELEASE "https://github.com/${CMMM_GIT_REPOSITORY}/releases/download/v${CMMM_VERSION}")
-  set_property(GLOBAL PROPERTY CMMM_GIT_URL_RELEASE ${CMMM_GIT_URL_RELEASE})
 
   if(NOT DEFINED CMMM_DESTINATION)
     set(CMMM_DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/CMakeMM")
