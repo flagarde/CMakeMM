@@ -8,7 +8,7 @@ This repository's main product is the GetCMakeMM.cmake file in the repository ro
 ## ❓ How to use CMakeMM ?
 
 ### 1️⃣ Download `GetCMakeMM.cmake`
-To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://github.com/flagarde/CMakeMM/releases and put it in a place CMake can find it.
+To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://github.com/flagarde/CMakeMM/blob/master/GetCMakeMM.cmake and put it in a place CMake can find it.
 
 ### 2️⃣ Use `GetCMakeMM.cmake` in your `CMakeLists.txt`.
  ```cmake
