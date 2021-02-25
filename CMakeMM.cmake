@@ -168,9 +168,9 @@ function(cmmm_modules_list)
 
   if(DEFINED CMMM_GIT_REPOSITORY)
     if(IS_ONLINE_RAW)
-      set(CMMM_GIT_URL "https://raw.githubusercontent.com/${CMMM_REPOSITORY}")
+      set(CMMM_URL "https://raw.githubusercontent.com/${CMMM_REPOSITORY}")
     else()
-      set(CMMM_GIT_URL "https://cdn.jsdelivr.net/gh/${CMMM_REPOSITORY}")
+      set(CMMM_URL "https://cdn.jsdelivr.net/gh/${CMMM_REPOSITORY}")
     endif()
   endif()
 
