@@ -14,6 +14,25 @@ if(NOT COMMAND colors)
   endmacro()
 endif()
 
+# Test if raw from github is available
+file(DOWNLOAD "https://raw.githubusercontent.com/TestingRepositories/Ping/master/Ping.cmake" "${CMAKE_CURRENT_BINARY_DIR}/Ping.cmake" STATUS PING_STATUS)
+list(GET PING_STATUS 0 PING_RC)
+list(GET PING_STATUS 1 PING_MSG)
+if(${PING_RC})
+  set(IS_ONLINE_RAW FALSE)
+  set(IS_OFFLINE_RAW TRUE)
+else()
+  include(${CMAKE_CURRENT_BINARY_DIR}/Ping.cmake)
+  if(${PING_RESPONSE} STREQUAL "Pong")
+    set(IS_ONLINE_RAW TRUE)
+    set(IS_OFFLINE_RAW FALSE)
+  else()
+    set(IS_ONLINE_RAW FALSE)
+    set(IS_OFFLINE_RAW TRUE)
+  endif()
+  unset(PING_RESPONSE)
+endif()
+
 # Do the update check.
 
 function(cmmm_changes CHANGELOG_VERSION)
