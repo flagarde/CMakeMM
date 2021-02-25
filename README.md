@@ -15,7 +15,7 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
 	set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 	include(GetCMakeMM)
 	cmmm(VERSION "1.0"
-       GIT_REPOSITORY "flagarde/CMakeMM"
+       REPOSITORY "flagarde/CMakeMM"
        VERBOSITY VERBOSE
        DESTINATION "CMakeMM"
        ALWAYS_DOWNLOAD)
@@ -27,7 +27,7 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
 
  `NO_COLOR` : Turn out the color.
 
- `GIT_REPOSITORY` : Repository where to download CMakeMM.
+ `REPOSITORY` : Repository where to download CMakeMM.
 
  `VERSION` : Version of CMakeMM to download.
 
