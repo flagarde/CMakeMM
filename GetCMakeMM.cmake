@@ -12,7 +12,7 @@ function(cmmm)
     set(CMMM_VERSION "master")
   endif()
 
-  FetchContent_Declare(CMakeMM GIT_REPOSITORY "https://github.com/${CMMM_REPOSITORY}" GIT_TAG "${CMMM_VERSION}" GIT_SHALLOW)
+  FetchContent_Declare(CMakeMM GIT_REPOSITORY "https://github.com/${CMMM_REPOSITORY}" GIT_TAG "v${CMMM_VERSION}" GIT_SHALLOW)
 
   if(NOT DEFINED CMAKEMM_INITIALIZED)
     string(ASCII 27 Esc)
