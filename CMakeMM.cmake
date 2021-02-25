@@ -33,6 +33,8 @@ else()
   unset(PING_RESPONSE)
 endif()
 
+message(STATUS "**** ${IS_ONLINE_RAW} ${IS_OFFLINE_RAW}")
+
 if(${IS_OFFLINE_RAW})
   message("${BoldYellow}## [CMakeMM] https://raw.githubusercontent.com not accessible; Use https://cdn.jsdelivr.net ##${Reset}")
 endif()
