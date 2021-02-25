@@ -35,7 +35,7 @@ endif()
 
 message(STATUS "**** ${IS_ONLINE_RAW} ${IS_OFFLINE_RAW}")
 
-if(${IS_OFFLINE_RAW})
+if(NOT ${IS_ONLINE_RAW})
   message("${BoldYellow}## [CMakeMM] https://raw.githubusercontent.com not accessible; Use https://cdn.jsdelivr.net ##${Reset}")
 endif()
 
