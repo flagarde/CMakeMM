@@ -201,6 +201,8 @@ macro(cmmm)
   list(INSERT CMAKE_MODULE_PATH 0 "${CMMM_DESTINATION}")
   list(REMOVE_DUPLICATES CMAKE_MODULE_PATH)
   set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" PARENT_SCOPE)
+  
+  message(STATUS "***** ${CMAKE_MODULE_PATH}")
 
   # This will trigger a warning if GetCMakeMM.cmake is not up-to-date ^^^ DO NOT CHANGE THIS LINE vvv
   set(CMMM_BOOTSTRAP_VERSION GET_CMAKEMM_VERSION)
