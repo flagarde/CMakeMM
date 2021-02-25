@@ -127,7 +127,7 @@ function(cmmm_check_updates)
   endif()
 endfunction()
 
-function(cmmm)
+macro(cmmm)
   cmake_parse_arguments(CMMM "ALWAYS_DOWNLOAD;NO_COLOR" "GIT_REPOSITORY;VERSION;DESTINATION;TIMEOUT;INACTIVITY_TIMEOUT;VERBOSITY" "" ${ARGN})
 
   if(NOT ${CMMM_NO_COLOR})
@@ -209,4 +209,4 @@ function(cmmm)
   cmmm_check_updates()
   include(CMakeMM)
 
-endfunction()
+endmacro()
