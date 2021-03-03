@@ -5,7 +5,7 @@ function(cmmm)
 
   cmake_parse_arguments(CMMM "NO_COLOR" "REPOSITORY;VERSION;VERBOSITY" "" ${ARGN})
   if(NOT DEFINED CMMM_REPOSITORY)
-    set(CMMM_REPOSITORY "flagarde/CMakeMM2")
+    set(CMMM_REPOSITORY "flagarde/CMakeMM")
   endif()
 
   if(NOT DEFINED CMMM_VERSION)
