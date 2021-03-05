@@ -13,9 +13,9 @@ function(cmmm)
   endif()
 
   if(${CMMM_VERSION} STREQUAL "master")
-    FetchContent_Declare(CMakeMM GIT_REPOSITORY "https://github.com/${CMMM_REPOSITORY}" GIT_TAG "${CMMM_VERSION}" GIT_SHALLOW)
+    fetchcontent_declare(CMakeMM GIT_REPOSITORY "https://github.com/${CMMM_REPOSITORY}" GIT_TAG "${CMMM_VERSION}" GIT_SHALLOW)
   else()
-    FetchContent_Declare(CMakeMM GIT_REPOSITORY "https://github.com/${CMMM_REPOSITORY}" GIT_TAG "v${CMMM_VERSION}" GIT_SHALLOW)
+    fetchcontent_declare(CMakeMM GIT_REPOSITORY "https://github.com/${CMMM_REPOSITORY}" GIT_TAG "v${CMMM_VERSION}" GIT_SHALLOW)
   endif()
 
   if(NOT DEFINED CMAKEMM_INITIALIZED)
@@ -29,10 +29,10 @@ function(cmmm)
 
   set(FETCHCONTENT_UPDATES_DISCONNECTED_CMAKEMM ON)
 
-  FetchContent_GetProperties(CMakeMM)
+  fetchcontent_getproperties(CMakeMM)
 
   if(NOT cmakemm_POPULATED)
-    FetchContent_Populate(CMakeMM)
+    fetchcontent_populate(CMakeMM)
     list(INSERT CMAKE_MODULE_PATH 0 ${cmakemm_SOURCE_DIR})
     set(CMAKEMM_INITIALIZED "TRUE" CACHE INTERNAL "CMakeMM has been installed")
     include(CMakeMM)
