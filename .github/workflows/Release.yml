@@ -50,25 +50,12 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: clang-format
-          
-      - name: 'Get Previous tag'
-        id: previoustag
-        uses: "WyriHaximus/github-action-get-previous-tag@v1"
         
       - name: Set GetCMakeMM version by tag
         run: |
           mkdir dist
           mv CMakeLists.txt dist/CMakeLists.txt
           mv CMakeMM.cmake dist/CMakeMM.cmake
-          
-      - name: Delete old release assets
-        uses: mknejp/delete-release-assets@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref }}
-          assets: | 
-            ${{ steps.previoustag.outputs.tag }}.zip
-            ${{ steps.previoustag.outputs.tag }}.tar.gz
 
       - name: Upload CMakeMM to release
         uses: svenstaro/upload-release-action@2.2.1
