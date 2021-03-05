@@ -31,7 +31,7 @@ jobs:
       with:
         name: clang-format
         path: ${{ github.workspace }}
-        
+     
     - name: Push
       uses: EndBug/add-and-commit@v7.1.0
       with:
@@ -50,7 +50,11 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: clang-format
-
+          
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        
       - name: Set GetCMakeMM version by tag
         run: |
           mkdir dist
@@ -63,8 +67,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref }}
           assets: | 
-            ${GITHUB_REF#refs/*/}.zip
-            ${GITHUB_REF#refs/*/}.tar.gz
+            ${{ steps.previoustag.outputs.tag }}.zip
+            ${{ steps.previoustag.outputs.tag }}.tar.gz
 
       - name: Upload CMakeMM to release
         uses: svenstaro/upload-release-action@2.2.1
