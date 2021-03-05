@@ -40,6 +40,7 @@ jobs:
         message: 'Committing clang-format changes'
         token: ${{ secrets.GITHUB_TOKEN }}
         pull_strategy: 'NO-PULL'
+        branch: master
 
   build:
     needs: format
