@@ -32,15 +32,6 @@ jobs:
       with:
         name: clang-format
         path: ${{ github.workspace }}
-
-    - name: Push
-      uses: EndBug/add-and-commit@v6.2.0
-      with:
-        author_name: Clang Robot
-        author_email: robot@example.com
-        message: 'Committing clang-format changes'
-        token: ${{ secrets.GITHUB_TOKEN }}
-        pull_strategy: '--rebase'
         
   build:
     needs: format
@@ -65,3 +56,12 @@ jobs:
           file: dist/*.cmake
           file_glob: true
           overwrite: true
+          
+      - name: Push
+        uses: EndBug/add-and-commit@v6.2.0
+        with:
+          author_name: Clang Robot
+          author_email: robot@example.com
+          message: 'Committing clang-format changes'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pull_strategy: '--rebase'
