@@ -6,11 +6,41 @@ on:
       - 'v*'
 
 jobs:
+# Checkout apply clang-format and upload artifact
+  format:
+    name: "Format"
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2.3.4
+
+    - name: Setup Python
+      uses: actions/setup-python@v2
+
+    - name: Install cmakelang
+      uses: BSFishy/pip-action@v1
+      with:
+        packages: cmakelang pyyaml jinja2
+
+    - name: Use cmake-format
+      run: find . \( -name '*.cmake' -o -name 'CMakeLists.txt' \) -exec cmake-format -i {} \;
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: clang-format
+        path: ${{ github.workspace }}
+
+
   build:
+    needs: format
     name: Release CMakeMM
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/download-artifact@v2
+        with:
+          name: clang-format
 
       - name: Set GetCMakeMM version by tag
         run: |
