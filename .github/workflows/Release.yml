@@ -47,7 +47,7 @@ jobs:
           mv CMakeMM.cmake dist/CMakeMM.cmake
 
       - name: Upload CMakeMM to release
-        uses: svenstaro/upload-release-action@v1-release
+        uses: svenstaro/upload-release-action@v2.2.1
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref }}
