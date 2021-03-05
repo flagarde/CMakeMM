@@ -63,8 +63,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref }}
           assets: | 
-            ${{ github.ref }}.zip
-            ${{ github.ref }}.tar.gz
+            ${GITHUB_REF#refs/*/}.zip
+            ${GITHUB_REF#refs/*/}.tar.gz
 
       - name: Upload CMakeMM to release
         uses: svenstaro/upload-release-action@2.2.1
