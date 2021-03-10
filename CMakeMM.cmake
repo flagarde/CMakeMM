@@ -60,12 +60,12 @@ endfunction()
 
 function(cmmm_check_updates)
   cmake_parse_arguments(CMMM "IGNORE_NEW_VERSION" "REPOSITORY" "" ${ARGN})
-  
+
   if("${CMMM_PROVIDER}" STREQUAL "https://github.com")
     check_accessible()
     message("${BoldYellow}## [CMakeMM] https://raw.githubusercontent.com not accessible; Use https://cdn.jsdelivr.net ##${Reset}")
   endif()
-  
+
   if("${IS_ONLINE_RAW}" STREQUAL "TRUE" AND "${CMMM_PROVIDER}" STREQUAL "https://github.com")
     set(CMMM_GIT_URL "https://raw.githubusercontent.com/${CMMM_REPOSITORY}/master")
   elseif("${IS_ONLINE_RAW}" STREQUAL "FALSE" AND "${CMMM_PROVIDER}" STREQUAL "https://github.com")
@@ -75,7 +75,7 @@ function(cmmm_check_updates)
   elseif("${CMMM_PROVIDER}" STREQUAL "https://gitee.com")
     set(CMMM_GIT_URL "https://gitee.com/${CMMM_REPOSITORY}/raw/master")
   endif()
-  
+
   # LatestVersion and Changelog must be up-to-date so must be in master
   set(CMMM_CHANGELOG_FILE "${CMMM_DESTINATION}/Changelog.cmake")
   set(CMMM_CHANGELOG_URL "${CMMM_GIT_URL}/Changelog.cmake")
@@ -257,7 +257,7 @@ endfunction()
 
 macro(cmmm_entry)
   cmake_parse_arguments(CMMM "ALWAYS_DOWNLOAD;NO_COLOR" "REPOSITORY;VERSION;DESTINATION;TIMEOUT;INACTIVITY_TIMEOUT;VERBOSITY;PROVIDER" "" ${ARGN})
-  
+
   if(NOT ${CMMM_NO_COLOR})
     colors()
   endif()
