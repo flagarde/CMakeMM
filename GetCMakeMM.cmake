@@ -19,9 +19,9 @@ function(cmmm)
     else()
       message("${Esc}[1;33m## [CMakeMM] Provider \"${CMMM_PROVIDER}\" unknown. Fall back to \"github\" ##${Esc}[m")
     endif()
-      set(CMMM_PROVIDER "https://github.com")
+    set(CMMM_PROVIDER "https://github.com")
   endif()
-  
+
   if(NOT DEFINED CMMM_REPOSITORY)
     set(CMMM_REPOSITORY "flagarde/CMakeMM")
   endif()
