@@ -35,11 +35,6 @@ macro(check_accessible)
   endif()
 endmacro()
 
-if(NOT ${IS_ONLINE_RAW})
-  check_accessible()
-  message("${BoldYellow}## [CMakeMM] https://raw.githubusercontent.com not accessible; Use https://cdn.jsdelivr.net ##${Reset}")
-endif()
-
 # Do the update check.
 
 function(cmmm_changes CHANGELOG_VERSION)
@@ -65,12 +60,22 @@ endfunction()
 
 function(cmmm_check_updates)
   cmake_parse_arguments(CMMM "IGNORE_NEW_VERSION" "REPOSITORY" "" ${ARGN})
-  check_accessible()
-  if(${IS_ONLINE_RAW})
-    set(CMMM_GIT_URL "https://raw.githubusercontent.com/${CMMM_REPOSITORY}/master")
-  else()
-    set(CMMM_GIT_URL "https://cdn.jsdelivr.net/gh/${CMMM_REPOSITORY}@master")
+  
+  if(NOT ${IS_ONLINE_RAW} AND "${CMMM_PROVIDER}" STREQUAL "github")
+    check_accessible()
+    message("${BoldYellow}## [CMakeMM] https://raw.githubusercontent.com not accessible; Use https://cdn.jsdelivr.net ##${Reset}")
   endif()
+  
+  if(${IS_ONLINE_RAW} AND "${CMMM_PROVIDER}" STREQUAL "github")
+    set(CMMM_GIT_URL "https://raw.githubusercontent.com/${CMMM_REPOSITORY}/master")
+  elseif(NOT ${IS_ONLINE_RAW} AND "${CMMM_PROVIDER}" STREQUAL "github")
+    set(CMMM_GIT_URL "https://cdn.jsdelivr.net/gh/${CMMM_REPOSITORY}@master")
+  elseif("${CMMM_PROVIDER}" STREQUAL "gitlab")
+    set(CMMM_GIT_URL "https://gitlab.com/${CMMM_REPOSITORY}/-/raw/master")
+  elseif("${CMMM_PROVIDER}" STREQUAL "gitee")
+    set(CMMM_GIT_URL "https://gitee.com/${CMMM_REPOSITORY}/raw/master")
+  endif()
+  
   # LatestVersion and Changelog must be up-to-date so must be in master
   set(CMMM_CHANGELOG_FILE "${CMMM_DESTINATION}/Changelog.cmake")
   set(CMMM_CHANGELOG_URL "${CMMM_GIT_URL}/Changelog.cmake")
@@ -251,8 +256,8 @@ function(cmmm_modules_list)
 endfunction()
 
 macro(cmmm_entry)
-  cmake_parse_arguments(CMMM "ALWAYS_DOWNLOAD;NO_COLOR" "REPOSITORY;VERSION;DESTINATION;TIMEOUT;INACTIVITY_TIMEOUT;VERBOSITY" "" ${ARGN})
-
+  cmake_parse_arguments(CMMM "ALWAYS_DOWNLOAD;NO_COLOR" "REPOSITORY;VERSION;DESTINATION;TIMEOUT;INACTIVITY_TIMEOUT;VERBOSITY;PROVIDER" "" ${ARGN})
+  
   if(NOT ${CMMM_NO_COLOR})
     colors()
   endif()
