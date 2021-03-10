@@ -25,6 +25,8 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
  *Will download `CMakeMM` from the release version `1.0` in flagarde/CMakeMM repository under `CMakeMM` folder.*
 
  #### Options :
+ `PROVIDER` : From where to download CMakeMM (github, gitlab or gitee).
+ 
  `ALWAYS_DOWNLOAD` : Always download the CMakeMM files.
 
  `NO_COLOR` : Turn out the color.
