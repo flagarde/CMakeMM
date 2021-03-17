@@ -16,7 +16,7 @@ endif()
 
 # Test if raw from github is available
 macro(check_accessible)
-  file(DOWNLOAD "https://raw.githubusercontent.com/TestingRepositories/Ping/master/Ping.cmake" "${CMAKE_CURRENT_BINARY_DIR}/Ping.cmake" STATUS PING_STATUS)
+  file(DOWNLOAD "https://raw.githubusercontent.com/flagarde/Ping/main/Ping.cmake" "${CMAKE_CURRENT_BINARY_DIR}/Ping.cmake" STATUS PING_STATUS)
   list(GET PING_STATUS 0 PING_RC)
   list(GET PING_STATUS 1 PING_MSG)
   if(${PING_RC})
