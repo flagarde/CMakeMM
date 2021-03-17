@@ -1,6 +1,5 @@
-set(CMMM_LATEST_VERSION 1.0)
+set(CMMM_LATEST_VERSION 0.9)
 
 function(changelog)
   cmmm_changes(0.9 "Alpha version")
-  cmmm_changes(1.0 "Init version")
 endfunction()
