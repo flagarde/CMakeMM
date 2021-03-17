@@ -26,11 +26,11 @@ function(cmmm)
     set(CMMM_REPOSITORY "flagarde/CMakeMM")
   endif()
 
-  if(NOT DEFINED CMMM_VERSION)
+  if(NOT DEFINED CMMM_VERSION OR CMMM_VERSION STREQUAL "master")
     set(CMMM_VERSION "main")
   endif()
 
-  if(${CMMM_VERSION} STREQUAL "master")
+  if(${CMMM_VERSION} STREQUAL "main")
     fetchcontent_declare(CMakeMM GIT_REPOSITORY "${CMMM_PROVIDER}/${CMMM_REPOSITORY}" GIT_TAG "${CMMM_VERSION}" GIT_SHALLOW)
   else()
     fetchcontent_declare(CMakeMM GIT_REPOSITORY "${CMMM_PROVIDER}/${CMMM_REPOSITORY}" GIT_TAG "v${CMMM_VERSION}" GIT_SHALLOW)
