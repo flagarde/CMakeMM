@@ -67,16 +67,16 @@ function(cmmm_check_updates)
   endif()
 
   if(IS_ONLINE_RAW STREQUAL "TRUE" AND CMMM_PROVIDER STREQUAL "https://github.com")
-    set(CMMM_GIT_URL "https://raw.githubusercontent.com/${CMMM_REPOSITORY}/master")
+    set(CMMM_GIT_URL "https://raw.githubusercontent.com/${CMMM_REPOSITORY}/main")
   elseif(IS_ONLINE_RAW STREQUAL "FALSE" AND CMMM_PROVIDER STREQUAL "https://github.com")
-    set(CMMM_GIT_URL "https://cdn.jsdelivr.net/gh/${CMMM_REPOSITORY}@master")
+    set(CMMM_GIT_URL "https://cdn.jsdelivr.net/gh/${CMMM_REPOSITORY}@main")
   elseif(CMMM_PROVIDER STREQUAL "https://gitlab.com")
-    set(CMMM_GIT_URL "https://gitlab.com/${CMMM_REPOSITORY}/-/raw/master")
+    set(CMMM_GIT_URL "https://gitlab.com/${CMMM_REPOSITORY}/-/raw/main")
   elseif(CMMM_PROVIDER STREQUAL "https://gitee.com")
-    set(CMMM_GIT_URL "https://gitee.com/${CMMM_REPOSITORY}/raw/master")
+    set(CMMM_GIT_URL "https://gitee.com/${CMMM_REPOSITORY}/raw/main")
   endif()
 
-  # LatestVersion and Changelog must be up-to-date so must be in master
+  # LatestVersion and Changelog must be up-to-date so must be in main
   set(CMMM_CHANGELOG_FILE "${CMMM_DESTINATION}/Changelog.cmake")
   set(CMMM_CHANGELOG_URL "${CMMM_GIT_URL}/Changelog.cmake")
   file(DOWNLOAD "${CMMM_CHANGELOG_URL}" "${CMMM_CHANGELOG_FILE}" STATUS CMMM_STATUS TIMEOUT ${CMMM_TIMEOUT} INACTIVITY_TIMEOUT ${CMMM_INACTIVITY_TIMEOUT})
