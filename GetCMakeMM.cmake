@@ -27,7 +27,7 @@ function(cmmm)
   endif()
 
   if(NOT DEFINED CMMM_VERSION)
-    set(CMMM_VERSION "master")
+    set(CMMM_VERSION "main")
   endif()
 
   if(${CMMM_VERSION} STREQUAL "master")
