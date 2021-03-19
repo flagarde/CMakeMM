@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.16...3.19)
 # include latest version
 include(../../../GetCMakeMM.cmake)
 
-project(TestCMakeMM VERSION "VERSION" DESCRIPTION "CMake Modules Manager" HOMEPAGE_URL "https://github.com/flagarde/CMakeMM" LANGUAGES NONE)
+project(TestCMakeMM VERSION "master" DESCRIPTION "CMake Modules Manager" HOMEPAGE_URL "https://github.com/flagarde/CMakeMM" LANGUAGES NONE)
 
 cmmm(VERSION "master" REPOSITORY "flagarde/CMakeMM" DESTINATION "CMakeMM" ALWAYS_DOWNLOAD)
 
