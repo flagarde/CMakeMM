@@ -18,4 +18,4 @@ jobs:
 
     - name: Run tests
       run: |
-        cmake -S tests -B build/tests
+        cmake -DCMAKEMM_TEST=ON -S . -B build
