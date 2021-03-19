@@ -8,7 +8,7 @@ project(TestCMakeMM VERSION "1.0" DESCRIPTION "CMake Modules Manager" HOMEPAGE_U
 cmmm(VERSION "master" REPOSITORY "flagarde/CMakeMM" DESTINATION "CMakeMM" ALWAYS_DOWNLOAD)
 
 cmmm_modules_list(
-  GIT_REPOSITORY
+  REPOSITORY
   "TestingRepositories/ModulesListTest/"
   DESTINATION
   "Modules"
