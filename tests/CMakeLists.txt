@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16...3.19)
 
-project(TestCMakeMM VERSION "${CMakeMM_VERSION}" DESCRIPTION "CMake Modules Manager" HOMEPAGE_URL "https://github.com/flagarde/CMakeMM" LANGUAGES NONE)
+project(TestCMakeMM DESCRIPTION "CMake Modules Manager" HOMEPAGE_URL "https://github.com/flagarde/CMakeMM" LANGUAGES NONE)
 
 execute_process(COMMAND ${CMAKE_COMMAND} "-S" "${CMAKE_CURRENT_SOURCE_DIR}/units/OldVersion" "-B" "${CMAKE_BINARY_DIR}/units/OldVersion")
 execute_process(COMMAND ${CMAKE_COMMAND} "-S" "${CMAKE_CURRENT_SOURCE_DIR}/units/OldVersionIgnore" "-B" "${CMAKE_BINARY_DIR}/units/OldVersionIgnore")
