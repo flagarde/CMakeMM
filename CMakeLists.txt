@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(CMakeMM VERSION "1.1" DESCRIPTION "" HOMEPAGE_URL "https://github.com/flagarde/CMakeMM" LANGUAGES NONE)
+project(CMakeMM VERSION "2.0" DESCRIPTION "CMake Modules Manager" HOMEPAGE_URL "https://github.com/flagarde/CMakeMM" LANGUAGES NONE)
 
-option(CMAKEMM_TEST "Run tests" OFF)
+option(BUILD_TEST "Run tests" OFF)
 
-if(CMAKEMM_TEST)
+if(BUILD_TEST)
   add_subdirectory(tests)
 endif()
