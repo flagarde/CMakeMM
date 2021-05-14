@@ -72,7 +72,21 @@ macro(cmmm_entry)
 
   set_property(GLOBAL PROPERTY CMMM_NO_COLOR ${CMMM_NO_COLOR})
 
-  list(INSERT VERBOSITY 0 "FATAL_ERROR" "SEND_ERROR" "WARNING" "AUTHOR_WARNING" "DEPRECATION" "NOTICE" "STATUS" "VERBOSE" "DEBUG" "TRACE")
+  list(
+    INSERT
+    VERBOSITY
+    0
+    "FATAL_ERROR"
+    "SEND_ERROR"
+    "WARNING"
+    "AUTHOR_WARNING"
+    "DEPRECATION"
+    "NOTICE"
+    "STATUS"
+    "VERBOSE"
+    "DEBUG"
+    "TRACE"
+    )
 
   if(DEFINED CMMM_VERBOSITY)
     list(FIND VERBOSITY ${CMMM_VERBOSITY} FOUND)
@@ -104,7 +118,7 @@ macro(cmmm_entry)
 
 endmacro()
 
-## CMCM
+# CMCM
 
 function(cmcm_module ARG_NAME)
   cmake_parse_arguments(ARG "" "REMOTE;LOCAL;VERSION" "ALSO" "${ARGV}")
@@ -280,7 +294,7 @@ function(cmmm_modules_list)
     message("${BoldGreen}** [CMakeMM] Modules will be installed in \"${CMMM_DESTINATION_MODULES}\" **${Reset}")
   endif()
 
-  #Always regenerate PreModules
+  # Always regenerate PreModules
   include("${CMMM_INSTALLED_DESTINATION}/${CMMM_FILENAME}.cmake")
 
 endfunction()
