@@ -26,7 +26,7 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
 
  #### Options :
  `PROVIDER` : From where to download CMakeMM (github, gitlab or gitee).
- 
+
  `ALWAYS_DOWNLOAD` : Always download the CMakeMM files.
 
  `NO_COLOR` : Turn out the color.
@@ -59,9 +59,9 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
  `ALWAYS_DOWNLOAD` : Always download the Modules List.
 
  `URL` : URL where to download the Modules List (`https://raw.githubusercontent.com/flagarde/CMakeMM` per default).
- 
+
  `REPOSITORY` : github repository to download the Modules List (`flagarde/CMakeCM` for example).
- 
+
  `PROVIDER` : From where to download CMakeMM (github, gitlab or gitee).
 
  `BRANCH` : Branch where to download the Modules List (`master` per default).
