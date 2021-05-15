@@ -33,7 +33,7 @@ jobs:
         path: ${{ github.workspace }}
 
     - name: Push
-      uses: EndBug/add-and-commit@v7.2.0
+      uses: EndBug/add-and-commit@v7.2.1
       with:
         author_name: Clang Robot
         author_email: robot@example.com
