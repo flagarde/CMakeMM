@@ -38,7 +38,6 @@ jobs:
         author_name: Clang Robot
         author_email: robot@example.com
         message: 'Committing clang-format changes'
-        token: ${{ secrets.GITHUB_TOKEN }}
         pull_strategy: 'NO-PULL'
         branch: main
 
