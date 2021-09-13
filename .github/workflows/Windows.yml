@@ -9,11 +9,15 @@ on:
     - main
 
 jobs:
-  build:
+  tests:
+    name: '🧪 Test'
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2.3.4
+    - name: '🧰 Checkout'
+      uses: actions/checkout@v2.3.4
+      with:
+        fetch-depth: 0
 
     - name: '🧪 Run tests'
       run: |
