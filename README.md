@@ -1,6 +1,6 @@
 # 📦 CMakeMM #
 
-![GitHub](https://img.shields.io/github/license/flagarde/CMakeMM) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/flagarde/CMakeMM) ![GitHub repo size](https://img.shields.io/github/repo-size/flagarde/CMakeMM) ![Release](https://github.com/flagarde/CMakeMM/workflows/Release/badge.svg) ![Tests Linux](https://github.com/flagarde/CMakeMM/workflows/Tests%20Linux/badge.svg) ![Tests MacOS](https://github.com/flagarde/CMakeMM/workflows/Tests%20MacOS/badge.svg) ![Tests Windows](https://github.com/flagarde/CMakeMM/workflows/Tests%20Windows/badge.svg)
+![GitHub](https://img.shields.io/github/license/flagarde/CMakeMM) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/flagarde/CMakeMM) ![GitHub repo size](https://img.shields.io/github/repo-size/flagarde/CMakeMM) ![Release](https://github.com/flagarde/CMakeMM/workflows/Release/badge.svg) ![Linux](https://github.com/flagarde/CMakeMM/workflows/Linux/badge.svg) ![MacOS](https://github.com/flagarde/CMakeMM/workflows/MacOS/badge.svg) ![Windows](https://github.com/flagarde/CMakeMM/workflows/Windows/badge.svg)
 
 CMake Modules Manager.
 
