@@ -53,7 +53,7 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
                    FILENAME ModuleLists
                    DESTINATION "Modules")
  ```
- *Will donwload the module list file called `ModuleLists.cmake` in folder `modules` on branch `master` from the github depot `https://raw.githubusercontent.com/SDHCAL/SDHCALCMakeModules`*.
+ *Will download the module list file called `ModuleLists.cmake` in folder `modules` on branch `master` from the github depot `https://raw.githubusercontent.com/SDHCAL/SDHCALCMakeModules`*.
 
  #### Options :
  `ALWAYS_DOWNLOAD` : Always download the Modules List.
