@@ -60,7 +60,7 @@ function(cmmm)
       if(CMMM_NO_COLOR OR WIN32 OR (CMAKE_VERSION VERSION_GREATER_EQUAL 3.21))
         message(FATAL_ERROR "[CMakeMM] Error downloading CMakeMM.cmake : ${CMAKECM_MESSAGE}")
       else()
-        message(FATAL_ERROR "${Esc}[31m [CMakeMM] Error downloading CMakeMM.cmake : ${CMAKECM_MESSAGE}${Esc}[m")
+        message(FATAL_ERROR "${Esc}[31m[CMakeMM] Error downloading CMakeMM.cmake : ${CMAKECM_MESSAGE}${Esc}[m")
       endif()
     endif()
 
