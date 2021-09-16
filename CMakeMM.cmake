@@ -85,7 +85,8 @@ macro(cmmm_entry)
     "STATUS"
     "VERBOSE"
     "DEBUG"
-    "TRACE")
+    "TRACE"
+)
 
   if(DEFINED CMMM_VERBOSITY)
     list(FIND VERBOSITY ${CMMM_VERBOSITY} FOUND)
