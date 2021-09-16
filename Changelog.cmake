@@ -1,5 +1,6 @@
 set(CMMM_LATEST_VERSION 2.0)
 
+# Changelog list 
 function(changelog)
   cmmm_changes(0.9 "Alpha version")
   cmmm_changes(1.0 "Initial version")
