@@ -17,7 +17,7 @@ repos:
     -   id: trailing-whitespace
     -   id: fix-byte-order-marker
 -   repo: https://github.com/external-packages/cmake-format-precommit
-    rev: v0.6.13
+    rev: v0.6.10
     hooks:
     -   id: cmake-format
     -   id: cmake-lint
