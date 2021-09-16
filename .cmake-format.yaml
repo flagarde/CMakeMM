@@ -34,7 +34,7 @@ markup:
   canonicalize_hashrulers: true
   enable_markup: true
 lint:
-  disabled_codes: [C0307,R0911,R0912,R0913,R0914,R0915]
+  disabled_codes: [C0103,C0307,R0911,R0912,R0913,R0914,R0915]
   function_pattern: '[0-9a-z_]+'
   macro_pattern: '[0-9A-Z_a-z]+'
   global_var_pattern: '[0-9A-Z][0-9A-Z_]+'
