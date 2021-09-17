@@ -1,4 +1,4 @@
-name: Windows
+name: 'Windows'
 
 on:
   push:
@@ -10,14 +10,30 @@ on:
 
 jobs:
   tests:
-    name: '🧪 Test'
     runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { icon: '🟨', cmake-version: '3.16.x', name: '3.16' }
+          - { icon: '🟨', cmake-version: '3.17.x', name: '3.17' }
+          - { icon: '🟨', cmake-version: '3.18.x', name: '3.18' }
+          - { icon: '🟨', cmake-version: '3.19.x', name: '3.19' }
+          - { icon: '🟨', cmake-version: '3.20.x', name: '3.20' }
+          - { icon: '🟨', cmake-version: '3.21.x', name: '3.21' }
+    name: '🧪${{ matrix.icon }} Test CMake ${{ matrix.cmake-version }}'
 
     steps:
     - name: '🧰 Checkout'
       uses: actions/checkout@v2.3.4
       with:
         fetch-depth: 0
+
+    - name: '${{ matrix.icon }} Setup CMake'
+      uses: jwlawson/actions-setup-cmake@v1.10
+      with:
+        cmake-version: '${{ matrix.cmake-version }}'
+        github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: '🧪 Run tests'
       run: |
