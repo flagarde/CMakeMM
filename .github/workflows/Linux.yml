@@ -15,13 +15,13 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { icon: '🟨', cmake-version: '3.16.x', name: '3.16' }
-          - { icon: '🟨', cmake-version: '3.17.x', name: '3.17' }
-          - { icon: '🟨', cmake-version: '3.18.x', name: '3.18' }
-          - { icon: '🟨', cmake-version: '3.19.x', name: '3.19' }
-          - { icon: '🟨', cmake-version: '3.20.x', name: '3.20' }
-          - { icon: '🟨', cmake-version: '3.21.x', name: '3.21' }
-    name: '🧪${{ matrix.icon }} Test CMake ${{ matrix.cmake-version }}'
+          - { cmake-version: '3.16.x', name: '3.16' }
+          - { cmake-version: '3.17.x', name: '3.17' }
+          - { cmake-version: '3.18.x', name: '3.18' }
+          - { cmake-version: '3.19.x', name: '3.19' }
+          - { cmake-version: '3.20.x', name: '3.20' }
+          - { cmake-version: '3.21.x', name: '3.21' }
+    name: '🧪 Test CMake ${{ matrix.name }}'
 
     steps:
     - name: '🧰 Checkout'
