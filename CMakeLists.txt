@@ -5,9 +5,10 @@ project(CMakeMM VERSION "2.0" DESCRIPTION "CMake Modules Manager" HOMEPAGE_URL "
 option(BUILD_TESTS "Build the tests." OFF)
 option(BUILD_DOCS "Build the docs." OFF)
 
+include("${CMAKE_CURRENT_SOURCE_DIR}/GetCMakeMM.cmake")
+
 if(BUILD_DOCS)
   #Download itself and use the modules to build the documentations.
-  include("${CMAKE_CURRENT_SOURCE_DIR}/GetCMakeMM.cmake")
   cmmm()
 endif()
 
