@@ -8,7 +8,7 @@ option(BUILD_DOCS "Build the docs." OFF)
 include("${CMAKE_CURRENT_SOURCE_DIR}/GetCMakeMM.cmake")
 
 if(BUILD_DOCS)
-  #Download itself and use the modules to build the documentations.
+  # Download itself and use the modules to build the documentations.
   cmmm()
 endif()
 
