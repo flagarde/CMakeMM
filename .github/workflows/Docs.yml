@@ -15,6 +15,7 @@ jobs:
     name: '📚 Docs'
 
     steps:
+
     - name: '🧰 Checkout'
       uses: actions/checkout@v2.3.4
       with:
@@ -22,11 +23,15 @@ jobs:
 
     - name: '🟨 Install required packages'
       run: brew install doxygen
-        && brew install sphinx-doc
+        && brew install mscgen
+        && brew install --cask dia
+        && brew install graphviz
+        && brew install --cask basictex
+        && pip3 install sphinx
         && pip3 install sphinx-rtd-theme
-        && pip3 install breathe
         && pip3 install sphinx-sitemap
         && pip3 install sphinxcontrib-moderncmakedomain
+        && pip3 install breathe
 
     - name: '🟨 Setup CMake'
       uses: jwlawson/actions-setup-cmake@v1.11
@@ -35,7 +40,7 @@ jobs:
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: '🔧 Configure'
-      run: cmake -S . -B ${{ env.CMAKE_BUILD_PREFIX }} -D CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }} -D BUILD_DOCS
+      run: cmake -S . -B ${{ env.CMAKE_BUILD_PREFIX }} -D CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }} -D BUILD_DOCS=ON
 
     - name: '⚙️ Build'
       run: cmake --build ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel 2 --target docs
