@@ -5,7 +5,8 @@ cmake_policy(VERSION "3.0")
 if(NOT COMMAND colors)
   # Colorize
   macro(colors)
-    if(NOT WIN32)
+    get_property(CMMM_NO_COLOR GLOBAL PROPERTY CMMM_NO_COLOR)
+    if(NOT ${CMMM_NO_COLOR})
       string(ASCII 27 Esc)
       set(Reset "${Esc}[m")
       set(BoldRed "${Esc}[1;31m")
@@ -66,27 +67,16 @@ endfunction()
 macro(cmmm_entry)
   cmake_parse_arguments(CMMM "ALWAYS_DOWNLOAD;NO_COLOR" "TAG;DESTINATION;TIMEOUT;INACTIVITY_TIMEOUT;VERBOSITY;URL" "" "${ARGN}")
 
-  if(NOT ${CMMM_NO_COLOR})
-    colors()
+  #Redo check here because the user can have a outdated GetCMakeMM
+  if(WIN32 OR DEFINED ENV{CLION_IDE} OR DEFINED ENV{DevEnvDir})
+    set(CMMM_NO_COLOR TRUE)
+  elseif(NOT DEFINED CMMM_NO_COLOR)
+    set(CMMM_NO_COLOR FALSE)
   endif()
 
-  set_property(GLOBAL PROPERTY CMMM_NO_COLOR ${CMMM_NO_COLOR})
+  colors()
 
-  list(
-    INSERT
-    VERBOSITY
-    0
-    "FATAL_ERROR"
-    "SEND_ERROR"
-    "WARNING"
-    "AUTHOR_WARNING"
-    "DEPRECATION"
-    "NOTICE"
-    "STATUS"
-    "VERBOSE"
-    "DEBUG"
-    "TRACE"
-    )
+  list(INSERT VERBOSITY 0 "FATAL_ERROR" "SEND_ERROR" "WARNING" "AUTHOR_WARNING" "DEPRECATION" "NOTICE" "STATUS" "VERBOSE" "DEBUG" "TRACE")
 
   if(DEFINED CMMM_VERBOSITY)
     list(FIND VERBOSITY ${CMMM_VERBOSITY} FOUND)
@@ -118,15 +108,12 @@ macro(cmmm_entry)
 
 endmacro()
 
-# CMCM
+## CMCM
 
 function(cmcm_module ARG_NAME)
   cmake_parse_arguments(ARG "" "REMOTE;LOCAL;VERSION" "ALSO" "${ARGV}")
 
-  get_property(CMMM_NO_COLOR GLOBAL PROPERTY CMMM_NO_COLOR)
-  if(NOT ${CMMM_NO_COLOR})
-    colors()
-  endif()
+  colors()
 
   if(NOT ARG_REMOTE AND NOT ARG_LOCAL)
     message("${BoldRed}!! [CMakeCM] Either LOCAL or REMOTE is required for cmcm_module !!${Reset}")
@@ -152,10 +139,8 @@ function(cmcm_module ARG_NAME)
 endfunction()
 
 macro(cmmm_include_module MODULE_NAME MODULE_URL version also)
-  get_property(CMMM_NO_COLOR GLOBAL PROPERTY CMMM_NO_COLOR)
-  if(NOT ${CMMM_NO_COLOR})
-    colors()
-  endif()
+
+  colors()
 
   get_property(CMMM_DESTINATION_MODULES GLOBAL PROPERTY CMMM_DESTINATION_MODULES)
   get_property(CMMM_URL_MODULES GLOBAL PROPERTY CMMM_URL_MODULES)
@@ -193,10 +178,7 @@ endmacro()
 function(cmmm_modules_list)
   cmake_parse_arguments(CMMM "ALWAYS_DOWNLOAD" "URL;REPOSITORY;PROVIDER;BRANCH;FOLDER;FILENAME;DESTINATION" "" "${ARGV}")
 
-  get_property(CMMM_NO_COLOR GLOBAL PROPERTY CMMM_NO_COLOR)
-  if(NOT ${CMMM_NO_COLOR})
-    colors()
-  endif()
+  colors()
 
   get_property(CMMM_INACTIVITY_TIMEOUT GLOBAL PROPERTY CMMM_INACTIVITY_TIMEOUT)
   get_property(CMMM_TIMEOUT GLOBAL PROPERTY CMMM_TIMEOUT)
@@ -223,7 +205,7 @@ function(cmmm_modules_list)
     elseif(CMMM_PROVIDER STREQUAL "gitee")
       set(CMMM_URL "https://gitee.com/flagarde/CMakeMM/raw")
     else()
-      if(CMMM_NO_COLOR OR WIN32)
+      if(CMMM_NO_COLOR)
         message("## [CMakeMM] Provider \"${CMMM_PROVIDER}\" unknown. Fall back to \"github\" ##")
       else()
         message("${BoldYellow}## [CMakeMM] Provider \"${CMMM_PROVIDER}\" unknown. Fall back to \"github\" ##${Reset}")
@@ -294,7 +276,7 @@ function(cmmm_modules_list)
     message("${BoldGreen}** [CMakeMM] Modules will be installed in \"${CMMM_DESTINATION_MODULES}\" **${Reset}")
   endif()
 
-  # Always regenerate PreModules
+  #Always regenerate PreModules
   include("${CMMM_INSTALLED_DESTINATION}/${CMMM_FILENAME}.cmake")
 
 endfunction()
