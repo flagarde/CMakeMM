@@ -10,6 +10,7 @@ function(cmmm)
   elseif(NOT DEFINED CMMM_NO_COLOR)
     set(CMMM_NO_COLOR FALSE)
   endif()
+  set_property(GLOBAL PROPERTY CMMM_NO_COLOR ${CMMM_NO_COLOR})
 
   if(NOT DEFINED CMMM_VERSION)
     set(CMMM_TAG "main")
