@@ -10,6 +10,8 @@ include("${CMAKE_CURRENT_SOURCE_DIR}/GetCMakeMM.cmake")
 if(BUILD_DOCS)
   # Download itself and use the modules to build the documentations.
   cmmm()
+  cmmm_modules_list(REPOSITORY "flagarde/CMakeCM")
+  include(Documentations)
 endif()
 
 if(BUILD_TESTS)
