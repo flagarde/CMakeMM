@@ -12,6 +12,7 @@ if(BUILD_DOCS)
   cmmm()
   cmmm_modules_list(REPOSITORY "flagarde/CMakeCM")
   include(Documentations)
+  doxyfile_docs()
 endif()
 
 if(BUILD_TESTS)
