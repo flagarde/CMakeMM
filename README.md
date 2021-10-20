@@ -41,7 +41,7 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
  ```cmake
 	set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 	include(GetCMakeMM)
-	cmmm(VERSION "1.0"
+	cmmm(VERSION "2.0"
        REPOSITORY "flagarde/CMakeMM"
        VERBOSITY VERBOSE
        DESTINATION "CMakeMM"
@@ -49,26 +49,27 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
  ```
  *Will download `CMakeMM` from the release version `1.0` in flagarde/CMakeMM repository under `CMakeMM` folder.*
 
- #### Options
- `PROVIDER` : From where to download CMakeMM (github, gitlab or gitee).
+**Options :**
 
- `ALWAYS_DOWNLOAD` : Always download the CMakeMM files.
+ - `PROVIDER` : From where to download CMakeMM (github, gitlab or gitee).
 
- `NO_COLOR` : Turn out the color.
+ - `ALWAYS_DOWNLOAD` : Always download the CMakeMM files.
 
- `REPOSITORY` : Repository where to download CMakeMM.
+ - `NO_COLOR` : Turn out the color.
 
- `VERSION` : Version of CMakeMM to download.
+ - `REPOSITORY` : Repository where to download CMakeMM.
 
- `DESTINATION` : Where to install CMakeMM.
+ - `VERSION` : Version of CMakeMM to download.
 
- `TIMEOUT` : Terminate the operation after a given total time has elapsed.
+ - `DESTINATION` : Where to install CMakeMM.
 
- `INACTIVITY_TIMEOUT` : Terminate the operation after a period of inactivity.
+ - `TIMEOUT` : Terminate the operation after a given total time has elapsed.
 
- `VERBOSITY` : Verbosity of CMakeMM `NOTICE`, `STATUS`, `VERBOSE`, `DEBUG` and `TRACE`.
+ - `INACTIVITY_TIMEOUT` : Terminate the operation after a period of inactivity.
 
- `IGNORE_NEW_VERSION` : Ignore new versions of `CMakeMM`.
+ - `VERBOSITY` : Verbosity of CMakeMM `NOTICE`, `STATUS`, `VERBOSE`, `DEBUG` and `TRACE`.
+
+ - `IGNORE_NEW_VERSION` : Ignore new versions of `CMakeMM`.
 
  ### 3️⃣ Tell to `CMakeMM` where to find the modules list and where to save the modules
  ```cmake
@@ -80,22 +81,23 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
  ```
  *Will download the module list file called `ModuleLists.cmake` in folder `modules` on branch `master` from the github depot `https://raw.githubusercontent.com/SDHCAL/SDHCALCMakeModules`*.
 
- #### Options
- `ALWAYS_DOWNLOAD` : Always download the Modules List.
+**Options :**
 
- `URL` : URL where to download the Modules List (`https://raw.githubusercontent.com/flagarde/CMakeMM` per default).
+ - `ALWAYS_DOWNLOAD` : Always download the Modules List.
 
- `REPOSITORY` : github repository to download the Modules List (`flagarde/CMakeCM` for example).
+ - `URL` : URL where to download the Modules List (`https://raw.githubusercontent.com/flagarde/CMakeMM` per default).
 
- `PROVIDER` : From where to download CMakeMM (github, gitlab or gitee).
+ - `REPOSITORY` : github repository to download the Modules List (`flagarde/CMakeCM` for example).
 
- `BRANCH` : Branch where to download the Modules List (`master` per default).
+ - `PROVIDER` : From where to download CMakeMM (github, gitlab or gitee).
 
- `FOLDER` : Folder where to download the Modules List.
+ - `BRANCH` : Branch where to download the Modules List (`master` per default).
 
- `FILENAME` : Name of the Modules List file.
+ - `FOLDER` : Folder where to download the Modules List.
 
- `DESTINATION` : Where to install the Modules.
+ - `FILENAME` : Name of the Modules List file.
+
+ - `DESTINATION` : Where to install the Modules.
 
  ### 4️⃣ Include the modules you need
   ```cmake
@@ -117,7 +119,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake"
 
 include(GetCMakeMM)
 
-cmmm(VERSION "1.0"
+cmmm(VERSION "2.0"
      REPOSITORY "flagarde/CMakeMM"
      VERBOSE
      DESTINATION "CMakeMM"
@@ -168,9 +170,8 @@ The `VERSION` argument is an arbitrary string that is used to invalidate local c
 
 The `REMOTE` is a `URL` to the file to download for the module. In order for your modification to be accepted into the repository, it must meet certain criteria:
 
-1. The URL *must* use `https`.
-2. The URL *must* refer to a stable file location. If using a `Git URL`, it should refer to a specific commit, not to a branch.
-
+ 1. The URL *must* use `https`.
+ 2. The URL *must* refer to a stable file location. If using a `Git URL`, it should refer to a specific commit, not to a branch.
 
 [l]: https://github.com/flagarde/CMakeMM/actions/workflows/Linux.yml
 [lb]: https://github.com/flagarde/CMakeMM/actions/workflows/Linux.yml/badge.svg
