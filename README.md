@@ -1,6 +1,42 @@
-# 📦 CMakeMM #
+<h1 align="center">
+  <a href="https://github.com/flagarde/CMakeMM"><img src="./docs/imgs/logo.png" width="300" title="CMakeMM logo" alt="CMakeMM"></a>
 
-![GitHub](https://img.shields.io/github/license/flagarde/CMakeMM) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/flagarde/CMakeMM) ![GitHub repo size](https://img.shields.io/github/repo-size/flagarde/CMakeMM) ![Release](https://github.com/flagarde/CMakeMM/workflows/Release/badge.svg) ![Linux](https://github.com/flagarde/CMakeMM/workflows/Linux/badge.svg) ![MacOS](https://github.com/flagarde/CMakeMM/workflows/MacOS/badge.svg) ![Windows](https://github.com/flagarde/CMakeMM/workflows/Windows/badge.svg)
+CMakeMM
+</h1>
+<h4 align="center">CMake Modules Manager.</h4>
+
+<h4 align="center">
+
+![GitHub](https://img.shields.io/github/license/flagarde/CMakeMM) 
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/flagarde/CMakeMM) 
+![GitHub repo size](https://img.shields.io/github/repo-size/flagarde/CMakeMM)
+![Release](https://github.com/flagarde/CMakeMM/workflows/Release/badge.svg)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/27d6ff0613724d63809143e635509b1b)](https://app.codacy.com/gh/flagarde/Khaos?utm_source=github.com&utm_medium=referral&utm_content=flagarde/Khaos&utm_campaign=Badge_Grade_Settings)
+[![Docs](https://github.com/flagarde/CMakeMM/actions/workflows/Docs.yml/badge.svg)](https://github.com/flagarde/CMakeMM/actions/workflows/Docs.yml)
+[![Codespell](https://github.com/flagarde/CMakeMM/actions/workflows/Codespell.yml/badge.svg)](https://github.com/flagarde/CMakeMM/actions/workflows/Codespell.yml)
+</h4>
+
+<h1 align="center"><a href="https://flagarde.github.io/CMakeMM/">
+
+```
+📖 Documentation
+```
+</a></h1>
+
+## Builds
+
+[l]: https://github.com/flagarde/CMakeMM/actions/workflows/Linux.yml
+[lb]: https://github.com/flagarde/CMakeMM/actions/workflows/Linux.yml/badge.svg
+
+[m]: https://github.com/flagarde/CMakeMM/actions/workflows/MacOS.yml
+[mb]: https://github.com/flagarde/CMakeMM/actions/workflows/MacOS.yml/badge.svg
+
+[m]: https://github.com/flagarde/CMakeMM/actions/workflows/Windows.yml
+[mb]: https://github.com/flagarde/CMakeMM/actions/workflows/Windows.yml/badge.svg
+
+|        | Linux Clang | MacOS Clang | Windows M2sys |
+|--------|-------------|-------------|---------------|
+| Github |[![Linux Clang][lb]][l]|[![MacOS Clang][mb]][m]|[![Windows MSYS2][mb]][m]|
 
 CMake Modules Manager.
 
