@@ -32,7 +32,7 @@ CMakeMM
 ## ✨ Introduction
 This repository's main product is the GetCMakeMM.cmake file in the repository root. It downloads CMakeMM which in turn download the list of modules available for download and consumption.
 
-## How to use CMakeMM ❓
+## ❓ How to use CMakeMM
 
 ### 1️⃣ Download `GetCMakeMM.cmake`
 To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://github.com/flagarde/CMakeMM/blob/master/GetCMakeMM.cmake and put it in a place CMake can find it.
