@@ -25,18 +25,9 @@ CMakeMM
 
 ## Tests
 
-[l]: https://github.com/flagarde/CMakeMM/actions/workflows/Linux.yml
-[lb]: https://github.com/flagarde/CMakeMM/actions/workflows/Linux.yml/badge.svg
-
-[m]: https://github.com/flagarde/CMakeMM/actions/workflows/MacOS.yml
-[mb]: https://github.com/flagarde/CMakeMM/actions/workflows/MacOS.yml/badge.svg
-
-[m]: https://github.com/flagarde/CMakeMM/actions/workflows/Windows.yml
-[mb]: https://github.com/flagarde/CMakeMM/actions/workflows/Windows.yml/badge.svg
-
-|        | Linux Clang | MacOS Clang | Windows M2sys |
-|--------|-------------|-------------|---------------|
-| Github |[![Linux Clang][lb]][l]|[![MacOS Clang][mb]][m]|[![Windows MSYS2][mb]][m]|
+|        | Linux           | MacOS           | Windows           |
+|--------|-----------------|-----------------|-------------------|
+| Github |[![Linux][lb]][l]|[![MacOS][mb]][m]|[![Windows][wb]][w]|
 
 ## ✨ Introduction
 This repository's main product is the GetCMakeMM.cmake file in the repository root. It downloads CMakeMM which in turn download the list of modules available for download and consumption.
@@ -179,3 +170,13 @@ The `REMOTE` is a `URL` to the file to download for the module. In order for you
 
 1. The URL *must* use `https`.
 2. The URL *must* refer to a stable file location. If using a `Git URL`, it should refer to a specific commit, not to a branch.
+
+
+[l]: https://github.com/flagarde/CMakeMM/actions/workflows/Linux.yml
+[lb]: https://github.com/flagarde/CMakeMM/actions/workflows/Linux.yml/badge.svg
+
+[m]: https://github.com/flagarde/CMakeMM/actions/workflows/MacOS.yml
+[mb]: https://github.com/flagarde/CMakeMM/actions/workflows/MacOS.yml/badge.svg
+
+[w]: https://github.com/flagarde/CMakeMM/actions/workflows/Windows.yml
+[wb]: https://github.com/flagarde/CMakeMM/actions/workflows/Windows.yml/badge.svg
