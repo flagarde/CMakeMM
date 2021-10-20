@@ -12,8 +12,6 @@ function(cmmm)
   endif()
   set_property(GLOBAL PROPERTY CMMM_NO_COLOR ${CMMM_NO_COLOR})
 
-  message(STATUS "LDLDLD $ENV{EnvDir}")
-
   if(WIN32 OR (EXISTS $ENV{CLION_IDE}) OR (EXISTS $ENV{DevEnvDir}) OR (EXISTS $ENV{workspaceRoot}))
     set(CMMM_NO_COLOR TRUE)
   endif()
