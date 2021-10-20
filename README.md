@@ -23,7 +23,7 @@ CMakeMM
 ```
 </a></h1>
 
-## Builds
+## Tests
 
 [l]: https://github.com/flagarde/CMakeMM/actions/workflows/Linux.yml
 [lb]: https://github.com/flagarde/CMakeMM/actions/workflows/Linux.yml/badge.svg
@@ -37,8 +37,6 @@ CMakeMM
 |        | Linux Clang | MacOS Clang | Windows M2sys |
 |--------|-------------|-------------|---------------|
 | Github |[![Linux Clang][lb]][l]|[![MacOS Clang][mb]][m]|[![Windows MSYS2][mb]][m]|
-
-CMake Modules Manager.
 
 ## ✨ Introduction
 This repository's main product is the GetCMakeMM.cmake file in the repository root. It downloads CMakeMM which in turn download the list of modules available for download and consumption.
