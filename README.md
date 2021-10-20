@@ -51,17 +51,16 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
  *Will download `CMakeMM` from the release version `1.0` in flagarde/CMakeMM repository under `CMakeMM` folder.*
 
 **Options :**
-
-  - `PROVIDER` : From where to download CMakeMM (github, gitlab or gitee).
-  - `ALWAYS_DOWNLOAD` : Always download the CMakeMM files.
-  - `NO_COLOR` : Turn out the color.
-  - `REPOSITORY` : Repository where to download CMakeMM.
-  - `VERSION` : Version of CMakeMM to download.
-  - `DESTINATION` : Where to install CMakeMM.
-  - `TIMEOUT` : Terminate the operation after a given total time has elapsed.
-  - `INACTIVITY_TIMEOUT` : Terminate the operation after a period of inactivity.
-  - `VERBOSITY` : Verbosity of CMakeMM `NOTICE`, `STATUS`, `VERBOSE`, `DEBUG` and `TRACE`.
-  - `IGNORE_NEW_VERSION` : Ignore new versions of `CMakeMM`.
+- `PROVIDER` : From where to download CMakeMM (github, gitlab or gitee).
+- `ALWAYS_DOWNLOAD` : Always download the CMakeMM files.
+- `NO_COLOR` : Turn out the color.
+- `REPOSITORY` : Repository where to download CMakeMM.
+- `VERSION` : Version of CMakeMM to download.
+- `DESTINATION` : Where to install CMakeMM.
+- `TIMEOUT` : Terminate the operation after a given total time has elapsed.
+- `INACTIVITY_TIMEOUT` : Terminate the operation after a period of inactivity.
+- `VERBOSITY` : Verbosity of CMakeMM `NOTICE`, `STATUS`, `VERBOSE`, `DEBUG` and `TRACE`.
+- `IGNORE_NEW_VERSION` : Ignore new versions of `CMakeMM`.
 
  ### 3️⃣ Tell to `CMakeMM` where to find the modules list and where to save the modules
  ```cmake
@@ -74,15 +73,14 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
  *Will download the module list file called `ModuleLists.cmake` in folder `modules` on branch `master` from the github depot `https://raw.githubusercontent.com/SDHCAL/SDHCALCMakeModules`*.
 
 **Options :**
-
-  - `ALWAYS_DOWNLOAD` : Always download the Modules List.
-  - `URL` : URL where to download the Modules List (`https://raw.githubusercontent.com/flagarde/CMakeMM` per default).
-  - `REPOSITORY` : github repository to download the Modules List (`flagarde/CMakeCM` for example).
-  - `PROVIDER` : From where to download CMakeMM (github, gitlab or gitee).
-  - `BRANCH` : Branch where to download the Modules List (`master` per default).
-  - `FOLDER` : Folder where to download the Modules List.
-  - `FILENAME` : Name of the Modules List file.
-  - `DESTINATION` : Where to install the Modules.
+- `ALWAYS_DOWNLOAD` : Always download the Modules List.
+- `URL` : URL where to download the Modules List (`https://raw.githubusercontent.com/flagarde/CMakeMM` per default).
+- `REPOSITORY` : github repository to download the Modules List (`flagarde/CMakeCM` for example).
+- `PROVIDER` : From where to download CMakeMM (github, gitlab or gitee).
+- `BRANCH` : Branch where to download the Modules List (`master` per default).
+- `FOLDER` : Folder where to download the Modules List.
+- `FILENAME` : Name of the Modules List file.
+- `DESTINATION` : Where to install the Modules.
 
  ### 4️⃣ Include the modules you need
   ```cmake
