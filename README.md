@@ -153,8 +153,8 @@ The `VERSION` argument is an arbitrary string that is used to invalidate local c
 
 The `REMOTE` is a `URL` to the file to download for the module. In order for your modification to be accepted into the repository, it must meet certain criteria:
 
- 1. The URL *must* use `https`.
- 2. The URL *must* refer to a stable file location. If using a `Git URL`, it should refer to a specific commit, not to a branch.
+  1. The URL *must* use `https`.
+  2. The URL *must* refer to a stable file location. If using a `Git URL`, it should refer to a specific commit, not to a branch.
 
 [l]: https://github.com/flagarde/CMakeMM/actions/workflows/Linux.yml
 [lb]: https://github.com/flagarde/CMakeMM/actions/workflows/Linux.yml/badge.svg
