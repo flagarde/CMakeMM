@@ -2,6 +2,7 @@ include_guard(GLOBAL)
 
 set(GET_CMMM_VERSION "1.0.0" CACHE INTERNAL "Version of GetCMakeMM.")
 
+# CMMM function
 function(cmmm)
   cmake_parse_arguments(CMMM "NO_COLOR" "VERSION;DESTINATION;INACTIVITY_TIMEOUT;TIMEOUT;REPOSITORY;PROVIDER" "" "${ARGN}")
 

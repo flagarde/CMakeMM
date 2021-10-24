@@ -7,8 +7,8 @@ CMakeMM
 
 <h4 align="center">
 
-![GitHub](https://img.shields.io/github/license/flagarde/CMakeMM) 
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/flagarde/CMakeMM) 
+![GitHub](https://img.shields.io/github/license/flagarde/CMakeMM)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/flagarde/CMakeMM)
 ![GitHub repo size](https://img.shields.io/github/repo-size/flagarde/CMakeMM)
 ![Release](https://github.com/flagarde/CMakeMM/workflows/Release/badge.svg)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/69bc83f9b6a44f52ae5d2790f55d2a0b)](https://www.codacy.com/gh/flagarde/CMakeMM/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=flagarde/CMakeMM&amp;utm_campaign=Badge_Grade)
@@ -47,7 +47,7 @@ To use `CMakeMM` you have to download the latest `GetCMakeMM.cmake` https://gith
        DESTINATION "CMakeMM"
        ALWAYS_DOWNLOAD)
  ```
- 
+
  *Will download `CMakeMM` from the release version `1.0` in flagarde/CMakeMM repository under `CMakeMM` folder.*
 
 **Options :**
