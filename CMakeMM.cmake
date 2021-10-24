@@ -25,6 +25,7 @@ function(cmmm_changes CHANGELOG_VERSION)
   endforeach()
 endfunction()
 
+# Print the changelog
 function(print_changelog)
   message("${BoldGreen}## [CMakeMM] Using CMakeMM version ${CMMM_VERSION}. The latest is ${CMMM_LATEST_VERSION}.${Reset}")
   message("${BoldGreen}             Changes since ${CMMM_VERSION} include the following :${Reset}")
@@ -33,6 +34,7 @@ function(print_changelog)
   message("${BoldGreen}             You can disable these messages by setting IGNORE_NEW_VERSION in cmmm function. ##${Reset}")
 endfunction()
 
+# Check updates
 function(cmmm_check_updates)
   cmake_parse_arguments(CMMM "IGNORE_NEW_VERSION" "URL;DESTINATION" "" "${ARGN}")
 
@@ -64,10 +66,11 @@ function(cmmm_check_updates)
 
 endfunction()
 
+# The CMMM entry
 macro(cmmm_entry)
   cmake_parse_arguments(CMMM "ALWAYS_DOWNLOAD;NO_COLOR" "TAG;DESTINATION;TIMEOUT;INACTIVITY_TIMEOUT;VERBOSITY;URL" "" "${ARGN}")
 
-  #Redo check here because the user can have a outdated GetCMakeMM
+  # Redo check here because the user can have a outdated GetCMakeMM
   if(WIN32 OR DEFINED ENV{CLION_IDE} OR DEFINED ENV{DevEnvDir})
     set(CMMM_NO_COLOR TRUE)
   elseif(NOT DEFINED CMMM_NO_COLOR)
@@ -76,7 +79,21 @@ macro(cmmm_entry)
 
   colors()
 
-  list(INSERT VERBOSITY 0 "FATAL_ERROR" "SEND_ERROR" "WARNING" "AUTHOR_WARNING" "DEPRECATION" "NOTICE" "STATUS" "VERBOSE" "DEBUG" "TRACE")
+  list(
+    INSERT
+    VERBOSITY
+    0
+    "FATAL_ERROR"
+    "SEND_ERROR"
+    "WARNING"
+    "AUTHOR_WARNING"
+    "DEPRECATION"
+    "NOTICE"
+    "STATUS"
+    "VERBOSE"
+    "DEBUG"
+    "TRACE"
+    )
 
   if(DEFINED CMMM_VERBOSITY)
     list(FIND VERBOSITY ${CMMM_VERBOSITY} FOUND)
@@ -108,8 +125,9 @@ macro(cmmm_entry)
 
 endmacro()
 
-## CMCM
+# CMCM
 
+# Module definition
 function(cmcm_module ARG_NAME)
   cmake_parse_arguments(ARG "" "REMOTE;LOCAL;VERSION" "ALSO" "${ARGV}")
 
@@ -138,6 +156,7 @@ function(cmcm_module ARG_NAME)
 
 endfunction()
 
+# Include the module
 macro(cmmm_include_module MODULE_NAME MODULE_URL version also)
 
   colors()
@@ -175,6 +194,7 @@ macro(cmmm_include_module MODULE_NAME MODULE_URL version also)
   include("${CMMM_RESOLVED}")
 endmacro()
 
+# Download the modules list
 function(cmmm_modules_list)
   cmake_parse_arguments(CMMM "ALWAYS_DOWNLOAD" "URL;REPOSITORY;PROVIDER;BRANCH;FOLDER;FILENAME;DESTINATION" "" "${ARGV}")
 
@@ -276,7 +296,7 @@ function(cmmm_modules_list)
     message("${BoldGreen}** [CMakeMM] Modules will be installed in \"${CMMM_DESTINATION_MODULES}\" **${Reset}")
   endif()
 
-  #Always regenerate PreModules
+  # Always regenerate PreModules
   include("${CMMM_INSTALLED_DESTINATION}/${CMMM_FILENAME}.cmake")
 
 endfunction()

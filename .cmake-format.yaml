@@ -34,24 +34,24 @@ markup:
   canonicalize_hashrulers: true
   enable_markup: true
 lint:
-  disabled_codes: [C0103,C0307,R0911,R0912,R0913,R0914,R0915]
+  disabled_codes: [C0307]
   function_pattern: '[0-9a-z_]+'
   macro_pattern: '[0-9A-Z_a-z]+'
   global_var_pattern: '[0-9A-Z][0-9A-Z_]+'
-  internal_var_pattern: _[0-9A-Z][0-9A-Z_]+
-  local_var_pattern: '[0-9a-z_]+'
-  private_var_pattern: _[0-9a-z_]+
+  internal_var_pattern: '[0-9A-Z][0-9A-Z_]+'
+  local_var_pattern: '[0-9a-z_A-Z]+'
+  private_var_pattern: '[0-9a-z_]+'
   public_var_pattern: '[0-9A-Z][0-9A-Z_]+'
-  argument_var_pattern: '[a-z][a-z0-9_]+'
+  argument_var_pattern: '[a-zA-Z][a-z0-9_A-Z]+'
   keyword_pattern: '[0-9A-Z_]+'
   max_conditionals_custom_parser: 2
   min_statement_spacing: 1
   max_statement_spacing: 2
   max_returns: 6
-  max_branches: 12
+  max_branches: 25
   max_arguments: 5
   max_localvars: 15
-  max_statements: 50
+  max_statements: 100
 encode:
   emit_byteorder_mark: false
   input_encoding: utf-8
