@@ -1,3 +1,4 @@
+# cmake-format: off
 include_guard(GLOBAL)
 
 set(GET_CMMM_VERSION "1.0.0" CACHE INTERNAL "Version of GetCMakeMM.")
@@ -88,3 +89,4 @@ function(cmmm)
   cmmm_entry("${ARGN}")
 
 endfunction()
+# cmake-format: on
