@@ -1,4 +1,4 @@
-set(CMMM_LATEST_VERSION 2.0)
+set(CMMM_LATEST_VERSION 2.1)
 
 # Changelog list
 function(changelog)
