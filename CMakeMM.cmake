@@ -6,6 +6,9 @@ if(NOT COMMAND colors)
   # Colorize
   macro(colors)
     get_property(CMMM_NO_COLOR GLOBAL PROPERTY CMMM_NO_COLOR)
+    if(WIN32 OR DEFINED ENV{CLION_IDE} OR DEFINED ENV{DevEnvDir})
+      set(CMMM_NO_COLOR TRUE)
+    endif()
     if(NOT ${CMMM_NO_COLOR})
       string(ASCII 27 Esc)
       set(Reset "${Esc}[m")
@@ -19,10 +22,12 @@ endif()
 
 # Do the update check
 function(cmmm_changes CHANGELOG_VERSION)
-  message("${BoldGreen}             - Changes in ${CHANGELOG_VERSION} :${Reset}")
-  foreach(CMMM_CHANGE IN LISTS ARGN)
-    message("${BoldGreen}               - ${CMMM_CHANGE}${Reset}")
-  endforeach()
+  if(CMMM_VERSION VERSION_LESS CHANGELOG_VERSION)
+    message("${BoldGreen}- Changes in ${CHANGELOG_VERSION} :${Reset}")
+    foreach(CMMM_CHANGE IN LISTS ARGN)
+      message("${BoldGreen}- ${CMMM_CHANGE}${Reset}")
+    endforeach()
+  endif()
 endfunction()
 
 # Print the changelog
