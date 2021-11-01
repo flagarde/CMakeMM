@@ -5,7 +5,7 @@ include(${GET_CMAKEMM_PATH}/GetCMakeMM.cmake)
 
 project(TestCMakeMM LANGUAGES NONE)
 
-cmmm(VERSION "2.0" REPOSITORY "flagarde/CMakeMM" DESTINATION "CMakeMM" ALWAYS_DOWNLOAD IGNORE_NEW_VERSION)
+cmmm(VERSION "2.1" REPOSITORY "flagarde/CMakeMM" DESTINATION "CMakeMM" ALWAYS_DOWNLOAD IGNORE_NEW_VERSION)
 
 cmmm_modules_list(REPOSITORY "TestingRepositories/ModulesListTest/" DESTINATION "Modules")
 
