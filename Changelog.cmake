@@ -1,4 +1,4 @@
-set(CMMM_LATEST_VERSION 2.1)
+set(CMMM_LATEST_VERSION 2.2)
 
 # Changelog list
 function(changelog)
@@ -7,5 +7,5 @@ function(changelog)
   cmmm_changes(1.1 "Default branch is now main not master" "Avoid redownloading modules list")
   cmmm_changes(2.0 "Suppress git and FetchContent dependencies" "${BoldRed}!! Please download the new GetCmakeMM.cmake !!${Reset}")
   cmmm_changes(2.1 "Suppress colors for visual studio and CLion" "${BoldRed}!! Please download the new GetCmakeMM.cmake !!${Reset}")
-  cmmm_changes(2.1 "Improve suppress colors for visual studio and CLion" "Improve changelog")
+  cmmm_changes(2.2 "Improve suppress colors for visual studio and CLion" "Improve changelog")
 endfunction()
