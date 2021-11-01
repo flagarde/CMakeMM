@@ -22,7 +22,7 @@ endif()
 
 # Do the update check
 function(cmmm_changes CHANGELOG_VERSION)
-  if(CMMM_VERSION VERSION_LESS CHANGELOG_VERSION)
+  if(${CMMM_VERSION} VERSION_LESS ${CHANGELOG_VERSION})
     message("${BoldGreen}- Changes in ${CHANGELOG_VERSION} :${Reset}")
     foreach(CMMM_CHANGE IN LISTS ARGN)
       message("${BoldGreen}- ${CMMM_CHANGE}${Reset}")
