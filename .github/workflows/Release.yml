@@ -27,7 +27,7 @@ jobs:
       run: find . \( -name '*.cmake' -o -name 'CMakeLists.txt' \) -exec cmake-format -i {} \;
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v2.2.4
+      uses: actions/upload-artifact@v2.3.0
       with:
         name: clang-format
         path: ${{ github.workspace }}
