@@ -13,7 +13,7 @@ CMakeMM
 ![Release](https://github.com/flagarde/CMakeMM/workflows/Release/badge.svg)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/69bc83f9b6a44f52ae5d2790f55d2a0b)](https://www.codacy.com/gh/flagarde/CMakeMM/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=flagarde/CMakeMM&amp;utm_campaign=Badge_Grade)
 [![Docs](https://github.com/flagarde/CMakeMM/actions/workflows/Docs.yml/badge.svg)](https://github.com/flagarde/CMakeMM/actions/workflows/Docs.yml)
-[![Codespell](https://github.com/flagarde/CMakeMM/actions/workflows/Codespell.yml/badge.svg)](https://github.com/flagarde/CMakeMM/actions/workflows/Codespell.yml)
+
 </h4>
 
 <h1 align="center"><a href="https://flagarde.github.io/CMakeMM/">
