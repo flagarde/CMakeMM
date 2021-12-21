@@ -7,18 +7,7 @@ project(TestCMakeMM LANGUAGES NONE)
 
 cmmm(VERSION "main" REPOSITORY "flagarde/CMakeMM" DESTINATION "CMakeMM" ALWAYS_DOWNLOAD)
 
-cmmm_modules_list(
-  REPOSITORY
-  "TestingRepositories/ModulesListTest/"
-  DESTINATION
-  "Modules"
-  FOLDER
-  "List"
-  FILENAME
-  "ModulesList2"
-  BRANCH
-  "main"
-  )
+cmmm_modules_list(REPOSITORY "TestingRepositories/ModulesListTest/" DESTINATION "Modules" FOLDER "List" FILENAME "ModulesList2" BRANCH "main")
 
 include(Module4)
 
