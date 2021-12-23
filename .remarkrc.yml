@@ -1,2 +1,3 @@
+---
 plugins:
   lint-maximum-line-length: 250
