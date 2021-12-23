@@ -1,21 +1,29 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
-  - repo: https://github.com/external-packages/pre-commit-hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
     hooks:
-    -   id: check-added-large-files
-    -   id: check-json
-    -   id: pretty-format-json
-    -   id: check-merge-conflict
-    -   id: check-symlinks
-    -   id: check-toml
-    -   id: check-xml
-    -   id: detect-private-key
-    -   id: end-of-file-fixer
-    -   id: forbid-new-submodules
-    -   id: trailing-whitespace
-    -   id: fix-byte-order-marker
+      - id: check-added-large-files
+        args: ['--maxkb=500']
+      - id: check-case-conflict
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-vcs-permalinks
+      - id: check-xml
+      - id: check-yaml
+      - id: destroyed-symlinks
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+      - id: forbid-new-submodules
+      - id: mixed-line-ending
+        args: ['--fix=lf']
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
 
   - repo: https://github.com/codespell-project/codespell
     rev: v2.1.0
@@ -34,3 +42,9 @@ repos:
     rev: 0.8.2
     hooks:
       - id: check-github-workflows
+
+  - repo: https://github.com/jackdewinter/pymarkdown
+    rev: 0.9.3
+    hooks:
+      - id: pymarkdown
+        args: ['--config=.pymarkdown.json','scan']

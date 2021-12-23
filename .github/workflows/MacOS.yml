@@ -3,10 +3,8 @@ name: 'MacOS'
 on:
   push:
     branches:
-    - main
+      - main
   pull_request:
-    branches:
-    - main
 
 jobs:
   tests:
@@ -21,9 +19,11 @@ jobs:
           - { cmake-version: '3.19.x', name: '3.19' }
           - { cmake-version: '3.20.x', name: '3.20' }
           - { cmake-version: '3.21.x', name: '3.21' }
+          - { cmake-version: '3.22.x', name: '3.22' }
     name: '🧪 Test CMake ${{ matrix.name }}'
 
     steps:
+
     - name: '🧰 Checkout'
       uses: actions/checkout@v2.4.0
       with:

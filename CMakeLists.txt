@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(CMakeMM VERSION "2.1" DESCRIPTION "CMake Modules Manager" HOMEPAGE_URL "https://github.com/flagarde/CMakeMM" LANGUAGES NONE)
+project(CMakeMM VERSION "2.2" DESCRIPTION "CMake Modules Manager" HOMEPAGE_URL "https://github.com/flagarde/CMakeMM" LANGUAGES NONE)
 
 option(BUILD_TESTS "Build the tests." OFF)
-option(BUILD_DOCS "Build the docs." ON)
+option(BUILD_DOCS "Build the docs." OFF)
 
 include("${CMAKE_CURRENT_SOURCE_DIR}/GetCMakeMM.cmake")
 
