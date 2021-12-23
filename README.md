@@ -26,9 +26,9 @@ CMakeMM
 
 ## Tests
 
-|        | Linux           | MacOS           | Windows           |
-|--------|-----------------|-----------------|-------------------|
-| Github |[![Linux][lb]][l]|[![MacOS][mb]][m]|[![Windows][wb]][w]|
+|        | Linux             | MacOS             | Windows             |
+|--------|-------------------|-------------------|---------------------|
+| Github | [![Linux][lb]][l] | [![MacOS][mb]][m] | [![Windows][wb]][w] |
 
 ## ✨ Introduction
 
@@ -42,7 +42,7 @@ To use `CMakeMM` you have to download the latest [`GetCMakeMM.cmake`](https://gi
 
 ### 2️⃣ Use `GetCMakeMM.cmake` in your `CMakeLists.txt`
 
- ```cmake
+```cmake
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(GetCMakeMM)
 cmmm(VERSION "2.0"
@@ -50,13 +50,13 @@ cmmm(VERSION "2.0"
      VERBOSITY VERBOSE
      DESTINATION "CMakeMM"
      ALWAYS_DOWNLOAD)
- ```
+```
 
- *Will download `CMakeMM` from the release version `1.0` in flagarde/CMakeMM repository under `CMakeMM` folder.*
+*Will download `CMakeMM` from the release version `1.0` in flagarde/CMakeMM repository under `CMakeMM` folder.*
 
 **Options :**
 
-- `PROVIDER` : From where to download CMakeMM (github, gitlab or gitee).
+- `PROVIDER` : From where to download CMakeMM (GitHub, gitlab or gitee).
 - `ALWAYS_DOWNLOAD` : Always download the CMakeMM files.
 - `NO_COLOR` : Turn out the color.
 - `REPOSITORY` : Repository where to download CMakeMM.
@@ -69,22 +69,22 @@ cmmm(VERSION "2.0"
 
 ### 3️⃣ Tell to `CMakeMM` where to find the modules list and where to save the modules
 
- ```cmake
+```cmake
 cmmm_modules_list(URL "https://raw.githubusercontent.com/flagarde/CMakeCM/main/ModulesList.cmake"
                   BRANCH master
                   FOLDER modules
                   FILENAME ModuleLists
                   DESTINATION "Modules")
- ```
+```
 
- *Will download the module list file called `ModuleLists.cmake` in folder `modules` on branch `master` from the github depot `https://raw.githubusercontent.com/SDHCAL/SDHCALCMakeModules`*.
+*Will download the module list file called `ModuleLists.cmake` in folder `modules` on branch `master` from the GitHub depot `https://raw.githubusercontent.com/SDHCAL/SDHCALCMakeModules`*.
 
 **Options :**
 
 - `ALWAYS_DOWNLOAD` : Always download the Modules List.
 - `URL` : URL where to download the Modules List (`https://raw.githubusercontent.com/flagarde/CMakeMM` per default).
-- `REPOSITORY` : github repository to download the Modules List (`flagarde/CMakeCM` for example).
-- `PROVIDER` : From where to download CMakeMM (github, gitlab or gitee).
+- `REPOSITORY` : GitHub repository to download the Modules List (`flagarde/CMakeCM` for example).
+- `PROVIDER` : From where to download CMakeMM (GitHub, gitlab or gitee).
 - `BRANCH` : Branch where to download the Modules List (`master` per default).
 - `FOLDER` : Folder where to download the Modules List.
 - `FILENAME` : Name of the Modules List file.
@@ -96,7 +96,7 @@ cmmm_modules_list(URL "https://raw.githubusercontent.com/flagarde/CMakeCM/main/M
 include(MyWonderfulModule)
 ```
 
-*Will download the module `MyWonderfulModule.cmake` is it's not present in the `CMAKE_MODULE_PATH` folders or `Modules` folder, then include it. Otherwise it will just include it.*
+*Will download the module `MyWonderfulModule.cmake` is it's not present in the `CMAKE_MODULE_PATH` folders or `Modules` folder, then include it. Otherwise, it will just include it.*
 
 ## ⚗  Example
 
@@ -163,6 +163,7 @@ cmcm_module(MyAwesomeModule.cmake
 The `VERSION` argument is an arbitrary string that is used to invalidate local copies of the module that have been downloaded.
 
 The `REMOTE` is a `URL` to the file to download for the module. In order for your modification to be accepted into the repository, it must meet certain criteria :
+
 1. The URL *must* use `https`.
 2. The URL *must* refer to a stable file location. If using a `Git URL`, it should refer to a specific commit, not to a branch.
 
