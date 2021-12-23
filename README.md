@@ -45,7 +45,11 @@ To use `CMakeMM` you have to download the latest [`GetCMakeMM.cmake`](https://gi
  ```cmake
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(GetCMakeMM)
-cmmm(VERSION "2.0" REPOSITORY "flagarde/CMakeMM" VERBOSITY VERBOSE DESTINATION "CMakeMM" ALWAYS_DOWNLOAD)
+cmmm(VERSION "2.0"
+     REPOSITORY "flagarde/CMakeMM"
+     VERBOSITY VERBOSE
+     DESTINATION "CMakeMM"
+     ALWAYS_DOWNLOAD)
  ```
 
  *Will download `CMakeMM` from the release version `1.0` in flagarde/CMakeMM repository under `CMakeMM` folder.*
@@ -66,7 +70,11 @@ cmmm(VERSION "2.0" REPOSITORY "flagarde/CMakeMM" VERBOSITY VERBOSE DESTINATION "
 ### 3️⃣ Tell to `CMakeMM` where to find the modules list and where to save the modules
 
  ```cmake
-cmmm_modules_list(URL "https://raw.githubusercontent.com/SDHCAL/SDHCALCMakeModules" BRANCH master FOLDER modules FILENAME ModuleLists DESTINATION "Modules")
+cmmm_modules_list(URL "https://raw.githubusercontent.com/flagarde/CMakeCM/main/ModulesList.cmake"
+                  BRANCH master
+                  FOLDER modules
+                  FILENAME ModuleLists
+                  DESTINATION "Modules")
  ```
 
  *Will download the module list file called `ModuleLists.cmake` in folder `modules` on branch `master` from the github depot `https://raw.githubusercontent.com/SDHCAL/SDHCALCMakeModules`*.
@@ -96,15 +104,25 @@ CMakeLists.txt :
 
 ```cmake
 cmake_minimum_required(VERSION 3.10...3.17.2 FATAL_ERROR)
-project(MySoftware VERSION "0.0.1.0" DESCRIPTION "MySoftware" HOMEPAGE_URL "https://github.com/SDHCAL/MySoftware" LANGUAGES CXX)
+project(MySoftware
+        VERSION "0.0.1.0"
+        DESCRIPTION "MySoftware"
+        HOMEPAGE_URL "https://github.com/flagarde/MySoftware"
+        LANGUAGES CXX)
 
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 include(GetCMakeMM)
 
-cmmm(VERSION "2.0" REPOSITORY "flagarde/CMakeMM" VERBOSE DESTINATION "CMakeMM" ALWAYS_DOWNLOAD)
+cmmm(VERSION "2.0"
+     REPOSITORY "flagarde/CMakeMM"
+     VERBOSITY VERBOSE
+     DESTINATION "CMakeMM"
+     ALWAYS_DOWNLOAD)
 
-cmmm_modules_list(URL "https://raw.githubusercontent.com/SDHCAL/SDHCALCMakeModules" BRANCH main DESTINATION "Modules")
+cmmm_modules_list(URL "https://raw.githubusercontent.com/SDHCAL/SDHCALCMakeModules"
+                  BRANCH main
+                  DESTINATION "Modules")
 
 # Now download the modules
 include(Colors)
@@ -137,7 +155,9 @@ The `VERSION` argument is an arbitrary string that is used to invalidate local c
 If you have a module that you wish to add, but it is contained in a remote location, you simply need to add the call in the Modules List :
 
 ```cmake
-cmcm_module(MyAwesomeModule.cmake REMOTE https://some-place.example.com/files/path/MyAwesomeModule.cmake VERSION 1)
+cmcm_module(MyAwesomeModule.cmake
+            REMOTE https://some-place.example.com/files/path/MyAwesomeModule.cmake
+            VERSION 1)
 ```
 
 The `VERSION` argument is an arbitrary string that is used to invalidate local copies of the module that have been downloaded.
