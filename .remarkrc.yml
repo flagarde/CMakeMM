@@ -1,3 +1,7 @@
 ---
 plugins:
-  remark-lint-maximum-line-length: 250
+  preset-lint-consistent:
+  preset-lint-markdown-style-guide:
+  preset-lint-recommended:
+  validate-links:
+    lint-maximum-line-length: 240
