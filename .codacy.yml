@@ -1,6 +1,4 @@
 ---
 engines:
-  remark-lint:
-    number : 250
 languages:
 exclude_paths:
