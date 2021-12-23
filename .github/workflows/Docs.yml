@@ -1,13 +1,18 @@
 name: 'Docs'
 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
 env:
   CMAKE_VERSION: '3.16.x'
   CMAKE_BUILD_TYPE: 'Release'
   CMAKE_BUILD_PREFIX: './build'
-
-on:
-  push:
-  pull_request:
+  CMAKE_INSTALL_PREFIX: './install'
 
 jobs:
   docs:
@@ -53,6 +58,6 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages # The branch the action should deploy to.
-        FOLDER: ${{ github.workspace }}/bin/docs/html # The folder the action should deploy.
+        BRANCH: gh-pages
+        FOLDER: ${{ github.workspace }}/bin/docs/html
         SINGLE_COMMIT: true
