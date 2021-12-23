@@ -1,6 +1,6 @@
 ---
 engines:
-  markdownlint:
-    line_length : 250
+  remark-lint:
+    number : 250
 languages:
 exclude_paths:
