@@ -63,19 +63,17 @@ MD013:
   # Number of characters for headings
   heading_line_length: 250
   # Number of characters for code blocks
-  code_block_line_length: 150
+  code_block_line_length: 250
   # Include code blocks
   code_blocks: true
   # Include tables
   tables: true
   # Include headings
   headings: true
-  # Include headings
-  headers: true
   # Strict length checking
-  strict: false
+  strict: true
   # Stern length checking
-  stern: false
+  stern: true
 
 # MD014/commands-show-output - Dollar signs used before commands without showing output
 MD014: true
