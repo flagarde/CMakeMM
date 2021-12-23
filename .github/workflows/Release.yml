@@ -15,7 +15,7 @@ jobs:
     - name: 'Checkout'
       uses: actions/checkout@v2.4.0
 
-    - id: 'Get version'
+    - id: 'Get-version'
       uses: battila7/get-version-action@v2
 
     - name: 'Set GetCMakeMM version by tag'
