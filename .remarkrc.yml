@@ -4,4 +4,4 @@ plugins:
   preset-lint-markdown-style-guide:
   preset-lint-recommended:
   validate-links:
-    lint-maximum-line-length: 240
+    lint-maximum-line-length: 260

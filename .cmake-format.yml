@@ -1,7 +1,7 @@
 {
   "format": {
     "disable": false,
-    "line_width": 250,
+    "line_width": 260,
     "tab_size": 2,
     "use_tabchars": false,
     "fractional_tab_policy": "use-space",
