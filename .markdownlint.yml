@@ -8,18 +8,14 @@ ul-style:
   style: "consistent"
 no-trailing-spaces: true
 line-length:
-  # Number of characters
   line_length: 260
-  # Include code blocks
+  heading_line_length: 260
+  code_block_line_length: 260
   code_blocks: true
-  # Include tables
   tables: true
-  # Include headings
   headings: true
-  # Strict length checking
-  strict: false
-  # Stern length checking
-  stern: false
+  strict: true
+  stern: true
 no-trailing-punctuation:
   punctuation: ".,;:!。，；：！？"
 no-emphasis-as-heading: true
