@@ -1,5 +1,4 @@
 ---
-# Base Markdownlint configuration
 default: true
 first-header-h1: false
 header-style:
@@ -7,15 +6,7 @@ header-style:
 ul-style:
   style: "consistent"
 no-trailing-spaces: true
-line-length:
-  line_length: 260
-  heading_line_length: 260
-  code_block_line_length: 260
-  code_blocks: true
-  tables: true
-  headings: true
-  strict: true
-  stern: true
+line-length: false
 no-trailing-punctuation:
   punctuation: ".,;:!。，；：！？"
 no-emphasis-as-heading: true
@@ -23,5 +14,4 @@ first-line-h1: false
 proper-names:
   names: []
   code_blocks: false
-no-inline-html:
-  allowed_elements: ["h1","h2","h3","h4","h5","h6","a","img"]
+no-inline-html: false
