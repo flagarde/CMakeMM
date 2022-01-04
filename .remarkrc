@@ -1,31 +1,8 @@
-import {remark} from 'remark'
-import remarkLintFinalNewline from 'remark-lint-final-newline'
-import remarkLintMaximumLineLength from 'remark-lint-maximum-line-length'
-import remarkLintUnorderedListMarkerStyle from 'remark-lint-unordered-list-marker-style'
-
-remark()
-  // Pass `false` to turn a rule off — the code no longer runs:
-  .use(remarkLintFinalNewline, false)
-  // Pass `true` to turn a rule on again:
-  .use(remarkLintFinalNewline, true)
-  // You can also configure whether messages by the rule should be ignored,
-  // are seen as code style warnings (default), or are seen as exceptions.
-  // Ignore messages with `'off'` or `0` as the first value of an array:
-  .use(remarkLintFinalNewline, ['off'])
-  .use(remarkLintFinalNewline, [0])
-  // Use `'warn'`, `'on'`, or `1` to treat messages as code style warnings:
-  .use(remarkLintFinalNewline, ['warn'])
-  .use(remarkLintFinalNewline, ['on'])
-  .use(remarkLintFinalNewline, [1])
-  // Use `'error'` or `2` to treat messages as exceptions:
-  .use(remarkLintFinalNewline, ['error'])
-  .use(remarkLintFinalNewline, [2])
-  // Some rules accept options, and what they exactly accept is different for
-  // each rule (sometimes a string, a number, or an object).
-  // The following rule accepts a string:
-  .use(remarkLintUnorderedListMarkerStyle, '*')
-  .use(remarkLintUnorderedListMarkerStyle, ['on', '*'])
-  .use(remarkLintUnorderedListMarkerStyle, [1, '*'])
-  // The following rule accepts a number, numbers *must* be passed in arrays:
-  .use(remarkLintMaximumLineLength, ['on', 72])
-  .use(remarkLintMaximumLineLength, [1, 72])
+{
+  "output": true,
+  "plugins": {
+    "remark-lint": {
+      "maximum-line-length": 260
+    }
+  }
+}
