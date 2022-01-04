@@ -16,8 +16,6 @@ line-length:
   tables: true
   # Include headings
   headings: true
-  # Include headings
-  headers: true
   # Strict length checking
   strict: false
   # Stern length checking
@@ -30,5 +28,4 @@ proper-names:
   names: []
   code_blocks: false
 no-inline-html:
-  # Allowed elements
-  allowed_elements: [h1,h2,h3,h4,h5,h6,a,img]
+  allowed_elements: ["h1","h2","h3","h4","h5","h6","a","img"]
