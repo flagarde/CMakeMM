@@ -1,0 +1,9 @@
+{
+  "plugins": [
+    "remark-lint"
+  ],
+  "settings": {
+    "no-html": false,
+    "maximum-line-length": "260"
+  }
+}

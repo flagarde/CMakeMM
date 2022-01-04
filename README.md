@@ -2,7 +2,9 @@
   <a href="https://github.com/flagarde/CMakeMM"><img src="./docs/imgs/logo.png" width="300" title="CMakeMM logo" alt="CMakeMM"></a>
 
 CMakeMM
+
 </h1>
+
 <h4 align="center">CMake Modules Manager.</h4>
 
 <h4 align="center">
