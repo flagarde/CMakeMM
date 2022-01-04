@@ -18,7 +18,7 @@ CMakeMM
 
 <h1 align="center"><a href="https://flagarde.github.io/CMakeMM/">
 
-```html
+```text
 📖 Documentation
 ```
 
@@ -26,9 +26,9 @@ CMakeMM
 
 ## Tests
 
-|        | Linux             | MacOS             | Windows             |
-|--------|-------------------|-------------------|---------------------|
-| Github | [![Linux][lb]][l] | [![MacOS][mb]][m] | [![Windows][wb]][w] |
+|       Linux       |       MacOS       |       Windows       |
+|:-----------------:|:-----------------:|---------------------|
+| [![Linux][lb]][l] | [![MacOS][mb]][m] | [![Windows][wb]][w] |
 
 ## ✨ Introduction
 
