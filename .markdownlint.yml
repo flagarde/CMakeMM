@@ -10,10 +10,6 @@ no-trailing-spaces: true
 line-length:
   # Number of characters
   line_length: 260
-  # Number of characters for headings
-  heading_line_length: 260
-  # Number of characters for code blocks
-  code_block_line_length: 260
   # Include code blocks
   code_blocks: true
   # Include tables
