@@ -1,62 +1,12 @@
-# Example markdownlint YAML configuration with all properties set to their default value
-
-# Default state for all rules
+---
+# Base Markdownlint configuration
 default: true
-
-# MD001/heading-increment/header-increment - Heading levels should only increment by one level at a time
-heading-increment: true
-
-# MD002/first-heading-h1/first-header-h1 - First heading should be a top-level heading
-first-heading-h1: false
-
-# MD003/heading-style/header-style - Heading style
+first-header-h1: false
 header-style:
-  # Heading style
   style: "consistent"
-
-# MD004/ul-style - Unordered list style
 ul-style:
-  # List style
   style: "consistent"
-
-# MD005/list-indent - Inconsistent indentation for list items at the same level
-list-indent: true
-
-# MD006/ul-start-left - Consider starting bulleted lists at the beginning of the line
-ul-start-left: true
-
-# MD007/ul-indent - Unordered list indentation
-ul-indent:
-  # Spaces for indent
-  indent: 2
-  # Whether to indent the first level of the list
-  start_indented: false
-
-# MD009/no-trailing-spaces - Trailing spaces
-no-trailing-spaces:
-  # Spaces for line break
-  br_spaces: 2
-  # Allow spaces for empty lines in list items
-  list_item_empty_lines: false
-  # Include unnecessary breaks
-  strict: false
-
-# MD010/no-hard-tabs - Hard tabs
-no-hard-tabs:
-  # Include code blocks
-  code_blocks: true
-  # Number of spaces for each hard tab
-  spaces_per_tab: 1
-
-# MD011/no-reversed-links - Reversed link syntax
-no-reversed-links: true
-
-# MD012/no-multiple-blanks - Multiple consecutive blank lines
-no-multiple-blanks:
-  # Consecutive blank lines
-  maximum: 1
-
-# MD013/line-length - Line length
+no-trailing-spaces: true
 line-length:
   # Number of characters
   line_length: 260
@@ -70,147 +20,19 @@ line-length:
   tables: true
   # Include headings
   headings: true
+  # Include headings
+  headers: true
   # Strict length checking
-  strict: true
+  strict: false
   # Stern length checking
-  stern: true
-
-# MD014/commands-show-output - Dollar signs used before commands without showing output
-commands-show-output: true
-
-# MD018/no-missing-space-atx - No space after hash on atx style heading
-no-missing-space-atx: true
-
-# MD019/no-multiple-space-atx - Multiple spaces after hash on atx style heading
-no-multiple-space-atx: true
-
-# MD020/no-missing-space-closed-atx - No space inside hashes on closed atx style heading
-no-missing-space-closed-atx: true
-
-# MD021/no-multiple-space-closed-atx - Multiple spaces inside hashes on closed atx style heading
-no-multiple-space-closed-atx: true
-
-# MD022/blanks-around-headings/blanks-around-headers - Headings should be surrounded by blank lines
-blanks-around-headers:
-  # Blank lines above heading
-  lines_above: 1
-  # Blank lines below heading
-  lines_below: 1
-
-# MD023/heading-start-left/header-start-left - Headings must start at the beginning of the line
-header-start-left: true
-
-# MD024/no-duplicate-heading/no-duplicate-header - Multiple headings with the same content
-no-duplicate-header:
-  # Only check sibling headings
-  allow_different_nesting: false
-  # Only check sibling headings
-  siblings_only: false
-
-# MD025/single-title/single-h1 - Multiple top-level headings in the same document
-single-h1:
-  # Heading level
-  level: 1
-  # RegExp for matching title in front matter
-  front_matter_title: "^\\s*title\\s*[:=]"
-
-# MD026/no-trailing-punctuation - Trailing punctuation in heading
+  stern: false
 no-trailing-punctuation:
-  # Punctuation characters
-  punctuation: ".,;:!。，；：！"
-
-# MD027/no-multiple-space-blockquote - Multiple spaces after blockquote symbol
-no-multiple-space-blockquote: true
-
-# MD028/no-blanks-blockquote - Blank line inside blockquote
-no-blanks-blockquote: true
-
-# MD029/ol-prefix - Ordered list item prefix
-ol-prefix:
-  # List style
-  style: "one_or_ordered"
-
-# MD030/list-marker-space - Spaces after list markers
-list-marker-space:
-  # Spaces for single-line unordered list items
-  ul_single: 1
-  # Spaces for single-line ordered list items
-  ol_single: 1
-  # Spaces for multi-line unordered list items
-  ul_multi: 1
-  # Spaces for multi-line ordered list items
-  ol_multi: 1
-
-# MD031/blanks-around-fences - Fenced code blocks should be surrounded by blank lines
-blanks-around-fences:
-  # Include list items
-  list_items: true
-
-# MD032/blanks-around-lists - Lists should be surrounded by blank lines
-blanks-around-lists: true
-
-# MD033/no-inline-html - Inline HTML
+  punctuation: ".,;:!。，；：！？"
+no-emphasis-as-heading: true
+first-line-h1: false
+proper-names:
+  names: []
+  code_blocks: false
 no-inline-html:
   # Allowed elements
   allowed_elements: [h1,h2,h3,h4,h5,h6,a,img]
-
-# MD034/no-bare-urls - Bare URL used
-no-bare-urls: true
-
-# MD035/hr-style - Horizontal rule style
-hr-style:
-  # Horizontal rule style
-  style: "consistent"
-
-# MD036/no-emphasis-as-heading/no-emphasis-as-header - Emphasis used instead of a heading
-no-emphasis-as-header:
-  # Punctuation characters
-  punctuation: ".,;:!?。，；：！？"
-
-# MD037/no-space-in-emphasis - Spaces inside emphasis markers
-no-space-in-emphasis: true
-
-# MD038/no-space-in-code - Spaces inside code span elements
-no-space-in-code: true
-
-# MD039/no-space-in-links - Spaces inside link text
-no-space-in-links: true
-
-# MD040/fenced-code-language - Fenced code blocks should have a language specified
-fenced-code-language: true
-
-# MD041/first-line-heading/first-line-h1 - First line in a file should be a top-level heading
-first-line-h1:
-  # Heading level
-  level: 1
-  # RegExp for matching title in front matter
-  front_matter_title: "^\\s*title\\s*[:=]"
-
-# MD042/no-empty-links - No empty links
-no-empty-links: true
-
-# MD043/required-headings/required-headers - Required heading structure
-required-headers: false
-
-# MD044/proper-names - Proper names should have the correct capitalization
-proper-names:
-  # List of proper names
-  names: []
-  # Include code blocks
-  code_blocks: true
-
-# MD045/no-alt-text - Images should have alternate text (alt text)
-no-alt-text: true
-
-# MD046/code-block-style - Code block style
-code-block-style:
-  # Block style
-  style: "consistent"
-
-# MD047/single-trailing-newline - Files should end with a single newline character
-single-trailing-newline: true
-
-# MD048/code-fence-style - Code fence style
-code-fence-style:
-  # Code fence style
-  style: "consistent"
