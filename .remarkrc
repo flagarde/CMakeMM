@@ -1,8 +1,0 @@
-{
-  "output": true,
-  "plugins": {
-    "remark-lint": {
-      "maximum-line-length": 260
-    }
-  }
-}
