@@ -39,7 +39,7 @@ jobs:
         && pip3 install breathe
 
     - name: '🟨 Setup CMake'
-      uses: jwlawson/actions-setup-cmake@v1.11
+      uses: jwlawson/actions-setup-cmake@v1.12
       with:
         cmake-version: '${{env.CMAKE_VERSION}}'
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
