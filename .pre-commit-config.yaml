@@ -39,7 +39,7 @@ repos:
         args: ['--config=.cmake-linter.yml']
 
   - repo: https://github.com/sirosen/check-jsonschema
-    rev: 0.9.1
+    rev: 0.10.0
     hooks:
       - id: check-github-workflows
 
