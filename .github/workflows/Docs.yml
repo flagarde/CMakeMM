@@ -58,5 +58,5 @@ jobs:
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
-        FOLDER: ${{ github.workspace }}/bin/docs/html
+        FOLDER: ${{ env.CMAKE_INSTALL_PREFIX }}/share/doc/CMakeMM/html/
         SINGLE_COMMIT: true
