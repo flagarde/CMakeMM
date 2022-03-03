@@ -52,7 +52,6 @@ jobs:
 
     - name: '📥 Install'
       run: cmake --install ${{ env.CMAKE_BUILD_PREFIX }} --prefix ${{ github.workspace }}/bin --strip
-        && touch ${{ github.workspace }}/bin/docs/html/.nojekyll
 
     - name: '🎉 Deploy'
       uses: JamesIves/github-pages-deploy-action@releases/v3
