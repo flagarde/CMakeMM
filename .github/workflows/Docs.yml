@@ -36,7 +36,6 @@ jobs:
     - name: 🐍 Install Conda environment
       uses: mamba-org/provision-with-micromamba@v11
       with:
-        environment-file: false
         environment-name: docs
         extra-specs: doxygen graphviz
 
