@@ -2,9 +2,9 @@ include_guard(GLOBAL)
 
 cmake_policy(VERSION "3.0")
 
-if(NOT COMMAND colors)
+if(NOT COMMAND COLORS)
   # Colorize
-  macro(colors)
+  macro(COLORS)
     get_property(CMMM_NO_COLOR GLOBAL PROPERTY CMMM_NO_COLOR)
     if(WIN32 OR DEFINED ENV{CLION_IDE} OR DEFINED ENV{DevEnvDir})
       set(CMMM_NO_COLOR TRUE)
@@ -72,7 +72,7 @@ function(cmmm_check_updates)
 endfunction()
 
 # The CMMM entry
-macro(cmmm_entry)
+macro(CMMM_ENTRY)
   cmake_parse_arguments(CMMM "ALWAYS_DOWNLOAD;NO_COLOR" "TAG;DESTINATION;TIMEOUT;INACTIVITY_TIMEOUT;VERBOSITY;URL" "" "${ARGN}")
 
   # Redo check here because the user can have a outdated GetCMakeMM
@@ -161,7 +161,7 @@ function(cmcm_module ARG_NAME)
 endfunction()
 
 # Include the module
-macro(cmmm_include_module MODULE_NAME MODULE_URL version also)
+macro(CMMM_INCLUDE_MODULE MODULE_NAME MODULE_URL version also)
 
   colors()
 

@@ -10,4 +10,5 @@ trim_trailing_whitespace = true
 insert_trailing_newline = true
 
 [*.md]
+indent_size = 1
 trim_trailing_whitespace = false

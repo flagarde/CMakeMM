@@ -2,9 +2,9 @@
 default: true
 first-header-h1: false
 header-style:
-  style: "consistent"
+  style: consistent
 ul-style:
-  style: "consistent"
+  style: consistent
 no-trailing-spaces: true
 line-length:
   line_length: 260
@@ -14,11 +14,11 @@ line-length:
   strict: true
   stern: true
 no-trailing-punctuation:
-  punctuation: ".,;:!。，；：！？"
+  punctuation: .,;:!。，；：！？
 no-emphasis-as-heading: true
 first-line-h1: false
 proper-names:
   names: []
   code_blocks: false
 no-inline-html:
-  allowed_elements: ["h1","h2","h3","h4","h5","h6","a","img"]
+  allowed_elements: [h1, h2, h3, h4, h5, h6, a, img]

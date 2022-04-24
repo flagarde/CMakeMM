@@ -1,9 +1,10 @@
-name: 'MacOS'
+---
+name: MacOS
 
 on:
   push:
     branches:
-      - main
+    - main
   pull_request:
 
 jobs:
@@ -13,28 +14,28 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { cmake-version: '3.16.x', name: '3.16' }
-          - { cmake-version: '3.17.x', name: '3.17' }
-          - { cmake-version: '3.18.x', name: '3.18' }
-          - { cmake-version: '3.19.x', name: '3.19' }
-          - { cmake-version: '3.20.x', name: '3.20' }
-          - { cmake-version: '3.21.x', name: '3.21' }
-          - { cmake-version: '3.22.x', name: '3.22' }
-    name: '🧪 Test CMake ${{ matrix.name }}'
+        - {cmake-version: 3.16.x, name: '3.16'}
+        - {cmake-version: 3.17.x, name: '3.17'}
+        - {cmake-version: 3.18.x, name: '3.18'}
+        - {cmake-version: 3.19.x, name: '3.19'}
+        - {cmake-version: 3.20.x, name: '3.20'}
+        - {cmake-version: 3.21.x, name: '3.21'}
+        - {cmake-version: 3.22.x, name: '3.22'}
+    name: 🧪 Test CMake ${{ matrix.name }}
 
     steps:
 
-    - name: '🧰 Checkout'
+    - name: 🧰 Checkout
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
 
-    - name: '${{ matrix.icon }} Setup CMake'
+    - name: ${{ matrix.icon }} Setup CMake
       uses: jwlawson/actions-setup-cmake@v1.12
       with:
-        cmake-version: '${{ matrix.cmake-version }}'
+        cmake-version: ${{ matrix.cmake-version }}
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: '🧪 Run tests'
+    - name: 🧪 Run tests
       run: |
         cmake -DBUILD_TESTS=ON -S . -B build

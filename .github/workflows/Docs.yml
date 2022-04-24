@@ -1,59 +1,52 @@
-name: 'Docs'
+---
+name: Docs
 
 on:
   push:
     branches:
-      - main
+    - main
   pull_request:
     branches:
-      - main
+    - main
 
 env:
-  CMAKE_VERSION: '3.16.x'
-  CMAKE_BUILD_TYPE: 'Release'
-  CMAKE_BUILD_PREFIX: './build'
-  CMAKE_INSTALL_PREFIX: './install'
+  CMAKE_VERSION: 3.16.x
+  CMAKE_BUILD_TYPE: Release
+  CMAKE_BUILD_PREFIX: ./build
+  CMAKE_INSTALL_PREFIX: ./install
 
 jobs:
   docs:
     runs-on: macos-latest
-    name: '📚 Docs'
+    name: 📚 Docs
 
     steps:
 
-    - name: '🧰 Checkout'
+    - name: 🧰 Checkout
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
 
-    - name: '🟨 Install required packages'
-      run: brew install doxygen
-        && brew install mscgen
-        && brew install --cask dia
-        && brew install graphviz
-        && brew install --cask basictex
-        && pip3 install sphinx
-        && pip3 install sphinx-rtd-theme
-        && pip3 install sphinx-sitemap
-        && pip3 install sphinxcontrib-moderncmakedomain
+    - name: 🟨 Install required packages
+      run: brew install doxygen && brew install mscgen && brew install --cask dia && brew install graphviz && brew install --cask basictex && pip3 install sphinx && pip3 install sphinx-rtd-theme && pip3 install sphinx-sitemap && pip3 install sphinxcontrib-moderncmakedomain
         && pip3 install breathe
 
-    - name: '🟨 Setup CMake'
+    - name: 🟨 Setup CMake
       uses: jwlawson/actions-setup-cmake@v1.12
       with:
-        cmake-version: '${{env.CMAKE_VERSION}}'
+        cmake-version: ${{env.CMAKE_VERSION}}
         github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: '🔧 Configure'
+    - name: 🔧 Configure
       run: cmake -S . -B ${{ env.CMAKE_BUILD_PREFIX }} -D CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }} -D BUILD_DOCS=ON
 
-    - name: '⚙️ Build'
+    - name: ⚙️ Build
       run: cmake --build ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel 2 --target docs
 
-    - name: '📥 Install'
+    - name: 📥 Install
       run: cmake --install ${{ env.CMAKE_BUILD_PREFIX }} --prefix ${{ github.workspace }}/bin --strip
 
-    - name: '🎉 Deploy'
+    - name: 🎉 Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
