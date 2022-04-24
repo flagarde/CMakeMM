@@ -36,8 +36,7 @@ jobs:
     - name: 🐍 Install Conda environment
       uses: mamba-org/provision-with-micromamba@v11
       with:
-        environment-name: docs
-        extra-specs: doxygen graphviz
+        environment-file: .github/micromamba/docs.yml
 
     - name: 🟨 Install miktex
       run: |
