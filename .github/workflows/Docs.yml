@@ -1,55 +1,74 @@
----
-name: Docs
+name: 'Docs'
 
 on:
   push:
     branches:
-    - main
+      - main
+
   pull_request:
-    branches:
-    - main
+
+defaults:
+  run:
+    shell: bash -l {0}
 
 env:
-  CMAKE_VERSION: 3.16.x
-  CMAKE_BUILD_TYPE: Release
-  CMAKE_BUILD_PREFIX: ./build
-  CMAKE_INSTALL_PREFIX: ./install
+  CMAKE_VERSION: '3.16.x'
+  CMAKE_BUILD_TYPE: 'Release'
+  CMAKE_BUILD_PREFIX: './build'
+  CMAKE_INSTALL_PREFIX: './install'
 
 jobs:
   docs:
-    runs-on: macos-latest
-    name: 📚 Docs
+    runs-on: ubuntu-latest
+    name: '📚 Docs'
 
     steps:
 
-    - name: 🧰 Checkout
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
+      - name: '🧰 Checkout'
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
 
-    - name: 🟨 Install required packages
-      run: brew install doxygen && brew install mscgen && brew install --cask dia && brew install graphviz && brew install --cask basictex && pip3 install sphinx && pip3 install sphinx-rtd-theme && pip3 install sphinx-sitemap && pip3 install sphinxcontrib-moderncmakedomain
-        && pip3 install breathe
+      - name: '🟨 Install packages'
+        run: sudo apt-get install dia mscgen inkscape
 
-    - name: 🟨 Setup CMake
-      uses: jwlawson/actions-setup-cmake@v1.12
-      with:
-        cmake-version: ${{env.CMAKE_VERSION}}
-        github-api-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: '🐍 Install Conda environment'
+        uses: mamba-org/provision-with-micromamba@v11
+        with:
+          environment-file: false
+          environment-name: docs
+          extra-specs: doxygen graphviz
 
-    - name: 🔧 Configure
-      run: cmake -S . -B ${{ env.CMAKE_BUILD_PREFIX }} -D CMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }} -D BUILD_DOCS=ON
+      - name: '🟨 Install miktex'
+        run: |
+          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D6BC243565B2087BC3F897C9277A7293F59E4889
+          echo "deb http://miktex.org/download/ubuntu focal universe" | sudo tee /etc/apt/sources.list.d/miktex.list
+          sudo apt-get update
+          sudo apt-get install miktex
+          sudo miktexsetup --shared=yes finish
+          sudo initexmf --admin --set-config-value [MPM]AutoInstall=1
 
-    - name: ⚙️ Build
-      run: cmake --build ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel 2 --target docs
+      - name: '🟨 Setup CMake'
+        uses: jwlawson/actions-setup-cmake@v1.12
+        with:
+          cmake-version: '${{env.CMAKE_VERSION}}'
+          github-api-token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: 📥 Install
-      run: cmake --install ${{ env.CMAKE_BUILD_PREFIX }} --prefix ${{ github.workspace }}/bin --strip
+      - name: '🔧 Configure'
+        run: cmake -S . -B ${{ env.CMAKE_BUILD_PREFIX }} -DCMAKE_BUILD_TYPE=${{ env.CMAKE_BUILD_TYPE }} -DBUILD_DOCS=ON -DCMAKE_PREFIX_PATH="~/micromamba"
 
-    - name: 🎉 Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v3
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: ${{ env.CMAKE_INSTALL_PREFIX }}/share/doc/CMakeMM/html/
-        SINGLE_COMMIT: true
+      - name: '⚙️ Build'
+        run: cmake --build ${{ env.CMAKE_BUILD_PREFIX }} --config ${{ env.CMAKE_BUILD_TYPE }} --parallel 2 --target all docs
+
+      - name: '📥 Install'
+        run: cmake --install ${{ env.CMAKE_BUILD_PREFIX }} --prefix ${{ env.CMAKE_INSTALL_PREFIX }} --strip
+          && mv ${{ env.CMAKE_INSTALL_PREFIX }}/share/doc/Khaos/pdf/Khaos_Manual.pdf ${{ env.CMAKE_INSTALL_PREFIX }}/share/doc/Khaos/html/Khaos_Manual.pdf
+
+      - name: '🎉 Deploy'
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.REPOS_ACCESS }}
+          REPOSITORY_NAME: flagarde/docs
+          BRANCH: main
+          FOLDER: ${{ env.CMAKE_INSTALL_PREFIX }}/share/doc/CMakeMM/html/
+          TARGET_FOLDER: CMakeMM
