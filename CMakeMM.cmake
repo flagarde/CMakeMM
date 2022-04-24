@@ -2,6 +2,18 @@ include_guard(GLOBAL)
 
 cmake_policy(VERSION "3.0")
 
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
+if(CMAKE_VERSION VERSION_GREATER_EQUAL 3.21)
+	if(PROJECT_IS_TOP_LEVEL)
+		enable_testing()
+	endif()
+elseif()
+	if(${CMAKE_PROJECT_NAME} STREQUAL ${PROJECT_NAME})
+		enable_testing()
+	endif()
+endif()
+
 if(NOT COMMAND COLORS)
   # Colorize
   macro(COLORS)

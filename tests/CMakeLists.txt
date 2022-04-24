@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16...3.19)
+cmake_minimum_required(VERSION 3.16...3.23)
 
 execute_process(COMMAND ${CMAKE_COMMAND} "-S" "${CMAKE_CURRENT_SOURCE_DIR}/units/OldVersion" "-B" "${CMAKE_BINARY_DIR}/units/OldVersion" "-DGET_CMAKEMM_PATH=${PROJECT_SOURCE_DIR}")
 execute_process(COMMAND ${CMAKE_COMMAND} "-S" "${CMAKE_CURRENT_SOURCE_DIR}/units/OldVersionIgnore" "-B" "${CMAKE_BINARY_DIR}/units/OldVersionIgnore" "-DGET_CMAKEMM_PATH=${PROJECT_SOURCE_DIR}")

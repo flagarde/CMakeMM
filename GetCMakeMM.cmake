@@ -1,22 +1,18 @@
 # cmake-format: off
 include_guard(GLOBAL)
 
-set(GET_CMMM_VERSION "1.0.0" CACHE INTERNAL "Version of GetCMakeMM.")
+set(GET_CMMM_VERSION "1.0.1" CACHE INTERNAL "Version of GetCMakeMM.")
 
 # CMMM function
 function(cmmm)
   cmake_parse_arguments(CMMM "NO_COLOR" "VERSION;DESTINATION;INACTIVITY_TIMEOUT;TIMEOUT;REPOSITORY;PROVIDER" "" "${ARGN}")
 
-  if(WIN32 OR DEFINED ENV{CLION_IDE} OR DEFINED ENV{DevEnvDir})
-    set(CMMM_NO_COLOR TRUE)
-  elseif(NOT DEFINED CMMM_NO_COLOR)
-    set(CMMM_NO_COLOR FALSE)
-  endif()
-  set_property(GLOBAL PROPERTY CMMM_NO_COLOR ${CMMM_NO_COLOR})
-
   if(WIN32 OR (EXISTS $ENV{CLION_IDE}) OR (EXISTS $ENV{DevEnvDir}) OR (EXISTS $ENV{workspaceRoot}))
     set(CMMM_NO_COLOR TRUE)
+  elseif(NOT DEFINED CMMM_NO_COLOR)
+	  set(CMMM_NO_COLOR FALSE)
   endif()
+  set_property(GLOBAL PROPERTY CMMM_NO_COLOR ${CMMM_NO_COLOR})
 
   if(NOT DEFINED CMMM_VERSION)
     set(CMMM_TAG "main")
@@ -27,7 +23,7 @@ function(cmmm)
   endif()
 
   if(NOT DEFINED CMMM_DESTINATION)
-    set(CMMM_DESTINATION "${CMAKE_BINARY_DIR}")
+    set(CMMM_DESTINATION "${CMAKE_BINARY_DIR}/CMakeMM")
   endif()
   get_filename_component(CMMM_DESTINATION "${CMMM_DESTINATION}" ABSOLUTE BASE_DIR "${CMAKE_BINARY_DIR}")
 
