@@ -10,7 +10,7 @@ function(cmmm)
   if(WIN32 OR (EXISTS $ENV{CLION_IDE}) OR (EXISTS $ENV{DevEnvDir}) OR (EXISTS $ENV{workspaceRoot}))
     set(CMMM_NO_COLOR TRUE)
   elseif(NOT DEFINED CMMM_NO_COLOR)
-	  set(CMMM_NO_COLOR FALSE)
+    set(CMMM_NO_COLOR FALSE)
   endif()
   set_property(GLOBAL PROPERTY CMMM_NO_COLOR ${CMMM_NO_COLOR})
 
