@@ -18,7 +18,7 @@ CMakeMM
 
 </h4>
 
-<h1 align="center"><a href="https://flagarde.github.io/CMakeMM/">
+<h1 align="center"><a href="https://flagarde.github.io/docs/CMakeMM/">
 
 ```text
 📖 Documentation
