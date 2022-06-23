@@ -34,7 +34,7 @@ jobs:
       run: sudo apt-get install dia mscgen inkscape
 
     - name: 🐍 Install Conda environment
-      uses: mamba-org/provision-with-micromamba@v11
+      uses: mamba-org/provision-with-micromamba@v12
       with:
         environment-file: .github/micromamba/docs.yml
 
