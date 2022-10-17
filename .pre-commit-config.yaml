@@ -51,7 +51,7 @@ repos:
     args: [--whitespaces-count, '2']
 
 - repo: https://github.com/codespell-project/codespell
-  rev: v2.2.1
+  rev: v2.2.2
   hooks:
   - id: codespell
 
@@ -63,7 +63,7 @@ repos:
     args: [--mapping, '2', --sequence, '2', --offset, '0', --width, '250']
 
 - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-  rev: 2.4.0
+  rev: 2.6.1
   hooks:
   - id: editorconfig-checker
     name: check .editorconfig rules
