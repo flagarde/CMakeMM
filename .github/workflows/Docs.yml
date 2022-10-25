@@ -64,7 +64,7 @@ jobs:
 
     - name: Check PDF Manual
       id: check_files
-      uses: andstor/file-existence-action@v1
+      uses: andstor/file-existence-action@v2
       with:
         files: ${{ env.CMAKE_INSTALL_PREFIX }}/share/doc/CMakeMM/pdf/CMakeMM_Manual.pdf
 
