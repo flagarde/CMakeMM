@@ -1,6 +1,6 @@
 include_guard(GLOBAL)
 
-cmake_policy(VERSION "3.0")
+cmake_policy(VERSION "3.5")
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
