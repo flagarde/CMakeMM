@@ -1,3 +1,5 @@
+MOVED TO https://github.com/cmake-tools/cmmm
+
 <h1 align="center">
   <a href="https://github.com/flagarde/CMakeMM"><img src="./docs/imgs/logo.png" width="300" title="CMakeMM logo" alt="CMakeMM"></a>
 
