@@ -14,7 +14,7 @@ fail_fast: false
 
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.5.0
+  rev: v6.0.0
   hooks:
   - id: check-added-large-files
     args: [--maxkb=200]
@@ -43,7 +43,7 @@ repos:
     name: check for conflict markers and core.whitespace errors
 
 - repo: https://github.com/Lucas-C/pre-commit-hooks
-  rev: v1.5.5
+  rev: v1.5.6
   hooks:
   - id: remove-crlf
   - id: remove-tabs
@@ -51,7 +51,7 @@ repos:
     args: [--whitespaces-count, '2']
 
 - repo: https://github.com/codespell-project/codespell
-  rev: v2.2.6
+  rev: v2.4.2
   hooks:
   - id: codespell
 
@@ -63,13 +63,13 @@ repos:
     args: [--mapping, '2', --sequence, '2', --offset, '0', --width, '250']
 
 - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-  rev: 2.7.3
+  rev: 3.6.1
   hooks:
   - id: editorconfig-checker
     name: check .editorconfig rules
 
 - repo: https://github.com/igorshubovych/markdownlint-cli
-  rev: v0.39.0
+  rev: v0.48.0
   hooks:
   - id: markdownlint
     args: [--config=.markdownlint.yml, scan]
@@ -83,7 +83,7 @@ repos:
     args: [--config=.cmake-linter.yml]
 
 - repo: https://github.com/pre-commit/mirrors-clang-format
-  rev: v17.0.6
+  rev: v22.1.4
   hooks:
   - id: clang-format
 
